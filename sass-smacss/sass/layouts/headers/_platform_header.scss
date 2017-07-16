@@ -1,0 +1,182 @@
+/* Platform Header
+============================================================
+========================================================= */
+
+.tickertags-logo {
+    float: left;
+    margin: 8px 20px 0 20px;
+    width: 91px;
+    height: 24px;
+    background-position: 0px 0px;
+    // background-position: 0px -160px;
+    background-size: 150px;
+    cursor: pointer;
+}
+
+.switch-mode {
+    float: left;
+    margin-right: 15px;
+
+    h1 {
+        float: left;
+        margin-top: 11px;
+        font-family: 'roboto_condensedlight';
+        color: #fff;
+    }
+
+    li { float: left; }
+
+    nav { margin-top: 2px; }
+
+    .switch-btn { padding: 10px 15px; }
+}
+
+.switch-btn-container {
+    float: left;
+    padding: 2px;
+    background: darken($gray4, 10%);
+    @include rounded(4px);
+}
+
+.platform-header {
+    top: 0;
+    padding: 5px 0px 20px 0px;
+    min-width: 1100px;
+    height: 25px;
+    background: darken($gray4, 2%);
+}
+
+.ph {
+    .bell-container {
+        position: relative;
+        top: -20px;
+        width: 100%;
+        height: 60px;
+        min-width: 10px;
+        &:hover {
+            .icon-bell-alt { color: $green; }
+        }
+    }
+
+    .icon-bell-alt {
+        position: relative; 
+        left: -15px;
+        padding-top: 20px;
+        padding-left: 30px;
+        font-size: em(16);
+        color: $white;
+        cursor: pointer;
+    }
+
+    .icon-bell-alt.alerts-red { color: $red; }
+
+    .bell-container.feed-on { background: $gray_47; }
+}
+
+.user-actions {
+    position: absolute;
+    top: 15px;
+    right: 0;
+
+    li {
+        float: left;
+        cursor: pointer;
+        &:last-child { margin-right: 0; height: 20px; }
+    }
+
+    .icon-tag { float: right; margin-left: 5px; }
+}
+
+.user-name { font-style: Condensed; font-weight: 300; color: $gray2; }
+
+.user-down-arrow {
+    float: right;
+    margin: 6px 0 0 6px;
+    @include triangle(down, 6px, $white);
+}
+
+.platform-btn {
+    padding: 0 15px;
+    height: 100%;
+    // border-left: 1px solid $gray3;
+    // border-right: 1px solid $gray3;
+    
+    .icon-envelope-open,
+    .icon-help-circled {
+        color: $gray2;
+        &:hover { color: $green; }
+    }
+}
+
+.user-name {
+    padding-right: 19px;
+    &:hover {
+        color: $green;
+        .user-down-arrow {
+            @include triangle(down, 6px, $green);
+        }
+    }
+}
+
+
+.user-settings-menu {
+    position: absolute;
+    z-index: 100;
+    top: 40px;
+    right: 48px;
+    margin-right: 113px;
+    padding: 10px 0 5px 10px;
+    width: 133px;
+    font-size: em(14);
+    background: $gray_47;
+    border: 1px solid $gray3;
+
+    &:before {
+        position: relative;
+        top: -18px;
+        left: 106px;
+        @include triangle(up, 7px, $gray3);
+    }
+
+    li { float: none; }
+
+    .link {
+        margin-left: 10px;
+        font-family: 'robotolight';
+        color: $white;
+        margin-bottom: 15px;
+        &:hover { color: $green; }
+    }
+}
+
+.user-dropdown-window {
+    position: relative;
+    z-index: 1050;
+    float: left;
+    width: 120px;
+}
+
+.user-drop-down { cursor: pointer; }
+
+// SVG
+// ---------------------------------------------------------
+.admins-assistant {
+    right:5%;
+    position: relative;
+}
+
+.alerts-gray,
+.alerts-red {
+    position: absolute !important;
+    left: 13px;
+    top: 20px;
+    width: 16px;
+    height: 20px;
+}
+
+.chat-icon {
+    width: 14px;
+    height: 14px;
+    background-position: -201px -2px;
+    &:hover { background-position: -201px -24px; }
+}

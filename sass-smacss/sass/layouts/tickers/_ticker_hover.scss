@@ -1,0 +1,94 @@
+/* tickerHover
+============================================================
+========================================================= */
+
+.ticker-hover-container {
+    float: left;
+    // position: absolute;
+    position: fixed;
+    z-index: 102;
+    // top: 35px;
+    left: 7px;
+    min-width: 130px;
+    width: auto;
+    height: auto;
+    color: $gray0;
+    background: $gray_47;
+    border: 1px solid $gray3;
+    @include rounded(3px);
+
+    &:before {
+        position: absolute;
+        top: -8px;
+        left: 26px;
+        z-index: 99;
+        @include triangle(up, 8px, $gray_47);
+    }
+
+    &:after {
+        position: absolute;
+        top: -9px;
+        left: 25px;
+        z-index: 98;
+        @include triangle(up, 9px, $gray3);
+    }
+
+    .tag-actions {
+        overflow: hidden;
+        border-top: 1px solid $gray3;
+        @include transition(all, .5s, ease-out);
+        &:hover { color: $green; background: darken($gray0, 5%); }
+    }
+}
+
+// Styling inside of mainSearch:
+.fuzzy-tickers {
+    .ticker-hover-container {
+        // top: 29px;
+        // left: 0px;
+        top: 5px;
+        left: 40px;
+        &:before { left: 8px; }
+        &:after { left: 7px; }
+    }
+}
+
+.ticker-info-padding {
+    float: left;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    
+    &:hover { background: lightn($gray4, 10%); }
+
+    em { margin-right: 2px; font-size: em(10); color: $gray0; }
+
+    h1 {
+        float: left;
+        width: 100%;
+        margin-bottom: 5px;
+        font-family: 'robotoregular';
+        font-size: em(24) !important;
+        color: #fff;
+    }
+
+    h2 {
+        float: left;
+        padding-bottom: 5px;
+        width: auto;
+        line-height: 16px;
+        color: #fff;
+    }
+}
+
+.ticker-action-padding {
+    float: left;
+    padding: 5px;
+    width: 100%;
+    font-family: 'robotoregular';
+    font-size: em(20);
+    background: $gray4;
+    cursor: pointer;
+}
+
+.remove-from-portfolio { font-size: em(10); line-height: 14px; }

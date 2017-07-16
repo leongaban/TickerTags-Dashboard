@@ -1,0 +1,216 @@
+/* View Header
+============================================================
+========================================================= */
+
+.view-header {
+    top: 103px;
+    padding: 15px 0 15px 0;
+    width: 100%;
+    min-width: 1100px;
+    height: 20px;
+    background: $gray_47;
+    border-top: 1px solid $gray3;
+    border-bottom: 1px solid $gray3;
+    // -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.1);
+    // -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.1);
+    // box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.1);
+
+    h1 {
+        float: left;
+        margin-top: 2px;
+        margin-left: 15px;
+        font-family: 'roboto_condensedlight';
+        font-size: (13);
+        color: $gray0;
+        margin-right: 20px;
+    }
+
+    .ticker-hover-container { width: 150px; }
+
+    .ticker-info-padding h2 { margin-top: 5px; padding: 0; }
+
+    .ticker-action-padding { padding: 5px 10px; }
+
+    .tag-container-container { top: 7px; }
+
+    .ticker-hover-container .tag-actions { display: none; }
+}
+
+.view-header-ticker {
+    float: left;
+    margin: 5px 10px 0 0;
+    .ticker-hover-container {
+        top: 150px; left: 80px; width: 150px;
+        h1 { margin-left: 0; }
+        h2 { font-size: em(14); }
+    }
+    .ticker { top: 2px; }
+}
+
+.push-viewing-tags { margin-top: -10px !important; }
+
+// Tags in viewHeader
+.viewing-tags {
+    position: relative;
+    float: left;
+    width: 100%;
+
+    .ticker { margin-right: 0; }
+
+    .tags-hover-container {
+        position: absolute;
+        top: 8px !important;
+        left: 0;
+        margin-left: 15px;
+        padding-top: 5px;
+        .ticker { margin-right: 10px; }
+    }
+
+    .tag {
+        margin-right: 0;
+        max-width: auto !important;
+        width: auto !important;
+        border: 1px solid $gray4 !important;
+        background: none !important;
+
+        .icon-cancel { margin-left: 5px; color: $gray3; }
+
+        &:hover {
+            border: 1px solid lighten($gray_47, 25%);
+            background: $gray4 !important;
+            -webkit-transition : background 500ms ease-out;
+            -moz-transition : background 500ms ease-out;
+            -o-transition : background 500ms ease-out;
+            .icon-cancel { color: $green; }
+        }
+    }
+}
+
+.tag-collection {
+    float: left;
+    margin: -15px 0 0 0;
+
+    .ticker {
+        color: #fff;
+        &:hover  { background: lighten($blue, 5%) !important; }
+    }
+
+    .tag.negative:after { top: 22px; right: -9px; }
+}
+
+.view-tags-list {
+    float: left;
+    margin-top: 1px;
+    
+    li { float: left; margin-right: 10px; }
+
+    li:first-child {
+        .tag { color: darken($tag_yellow, 20%) !important; border: 1px solid $tag_yellow !important; }
+    }
+
+    li:nth-child(2) {
+        .tag { color: darken($tag_cyan, 10%) !important; border: 1px solid $tag_cyan !important; }
+    }
+
+    li:nth-child(3) {
+        .tag { color: $tag_blue; border: 1px solid $tag_blue !important; }
+    }
+}
+
+.viewing-controls {
+    float: right;
+    position: absolute;
+    top: 16px;
+    right: 10px;
+    margin-top: -16px;
+    padding-top: 16px;
+    height: 30px;
+    color: #fff;
+    background: $gray_47;
+    a { color: $gray_ticker; cursor: pointer; }
+}
+
+.btn-clear-view {
+    float: left;
+    margin: -5px 10px 0 0;
+    padding: 5px 10px 0 5px;
+    font-size: em(10);
+    text-transform: uppercase;
+    border-right: 1px solid $gray2;
+    cursor: pointer;
+    @include clearfix();
+    span { float: left; margin-top: 1px; color: $gray_ticker; }
+}
+
+.clear-tags {
+    float: left;
+    margin-right: 15px;
+    padding-left: 10px;
+    font-size: em(12);
+    color: $gray2;
+    cursor: pointer;
+    &:hover { color: $green; }
+    @include noselect();
+}
+
+.granularity {
+    margin-top: -10px;
+    font-size: em(10);
+    color: #fff;
+    .radio { position: relative; top: 4px; }
+}
+
+.saved-views {
+    float: left;
+    margin: -12px 10px 0 5px;
+    padding: 12px 0 0 10px;
+    height: 25px;
+    font-size: em(12);
+    border-left: 1px solid $gray3;
+    cursor: pointer;
+    &:hover { color: $green; }
+    .icon-share { float: left; margin-right: 5px; }
+}
+
+.export-data-popover,
+.saved-views-modal {
+    position: fixed;
+    padding: 10px;
+    width: 180px;
+    background: $gray_47;
+    border: 1px solid $gray3;
+    z-index: 1050;
+    @include rounded(2px);
+
+    &:before { z-index: 2; position: relative; top: -18px; left: 126px; @include triangle(up, 8px, $gray_47); }
+    &:after  { z-index: 1; position: absolute; top: -9px;  left: 135px; @include triangle(up, 9px, $gray3); }
+
+    h1 { color: $gray2; }
+
+    input {
+        margin-bottom: 10px;
+        padding: 6px 0 6px 10px;
+        height: 20px;
+        border: 1px solid $gray2;
+        background: $gray_bg;
+        @include rounded(4px);
+    }
+
+    p { margin: -10px 0 10px 0; font-size: em(12); color: $gray_ticker; }
+
+    .select-style { margin-top: 10px; }
+    .btn-green-filled { width: 100%; }
+}
+
+.saved-views-modal {
+    top: 152px;
+    right: 4px;
+    header { margin-bottom: 10px; }
+    button { padding: 6px 0; }
+    button:last-child { margin-top: 10px; }
+    .select-style { margin-bottom: 10px; }
+}
+
+.view-chart-expanded { z-index: 102 !important; }
+
+.csv-directions { line-height: 16px; font-size: em(11); }

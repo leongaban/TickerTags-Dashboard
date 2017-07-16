@@ -1,0 +1,41 @@
+<div>
+  <div class="add-ticker-modal"
+       ng-mouseenter="atkm.mouseEnter();"
+       ng-mouseleave="atkm.toggleHelpBubble('close-add-ticker')">
+
+      <p>Add a ticker to your portfolio.</p>
+
+      <input type="text"
+             id="addTickerInput"
+             ng-model="atkm.addTickerInput"
+             ng-change="atkm.typingTicker(atkm.addTickerInput)"
+             placeholder="TICKER"
+             focus-add-ticker="atkm.focusAddTicker"
+             required>
+      
+      <div ng-show="atkm.tickersListLoaded" class="search-tickers-popover">
+        <section class="search-tickers">
+            <div class="icon-cancel" ng-click="atkm.cancel()"></div>
+            <h1 ng-show="atkm.tickersListLoaded">CHOOSE TICKER TO ADD</h1>
+            <h2 ng-show="atkm.noTickers">No tickers</h2>
+
+            <div class="fuzzy-tickers">
+                <span ng-hide="atkm.tickersListLoaded" class="icon-spin5 animate-spin"></span>
+                <section class="ticker-info" ng-repeat="t in atkm.addTickersList">
+                    <div class="tag-container">
+                        <div class="ticker-symbol" ng-click="atkm.addTicker(t)">{{ :: t.ticker}}</div>
+                    </div>
+
+                    <div class="ticker-details">
+                        <ul>
+                            <li>{{t.longname}}</li>
+                            <li>{{t.exchange}}</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+  </div>
+  <div class="overlay" ng-click="atkm.cancel()"></div>
+</div>

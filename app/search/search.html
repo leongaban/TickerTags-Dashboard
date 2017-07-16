@@ -1,0 +1,81 @@
+<section>
+    <div ng-keyup="event=$event">
+        <div class="search-input search container-fluid">
+            <input type="text" class="form-control" placeholder="Search"
+                   ng-model="sc.searched"
+                   ng-change="sc.tickerTagSearch(sc.searched)"
+                   ng-keyup="sc.keyUp($event)"
+                   ng-click="sc.searchStopPropagation($event)">
+        </div>
+
+        <div class="search-popover" ng-show="sc.init">
+            <section class="search-tickers">
+                <h1>TICKERS</h1>
+                <div class="fuzzy-tickers">
+                    <span ng-hide="sc.tickersListLoaded" class="icon-spin5 animate-spin"></span>
+                    <section class="ticker-info" ng-repeat="ticker in sc.tickersList track by $index" ng-mouseleave="sc.leaveTicker(ticker)">
+                        <div class="tag-container">
+                            <div class="ticker-symbol"
+                                 ng-mouseenter="sc.hoverTicker(ticker)"
+                                 ng-click="sc.selectTicker(ticker)">{{ ticker.ticker }}</div>
+                            <!-- <ticker-ticker_hover ticker="ticker"></ticker-ticker_hover> -->
+                        </div>
+                        <div class="ticker-details">
+                            <ul>
+                                <li>{{ ticker.longname }}</li>
+                                <li>{{ ticker.exchange }}</li>
+                            </ul>
+                        </div>
+                        <div class="to-portfolio" ng-show="!ticker.portfolio" ng-click="sc.addTicker(ticker)">
+                            + Portfolio
+                        </div>
+                        <div class="to-portfolio" ng-show="ticker.portfolio" ng-click="sc.removeTicker(ticker)">
+                            - Portfolio
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <section class="search-tags">
+                <header><h1>TAGS</h1></header>
+                <div class="icon-cancel" ng-click="sc.close()"></div>
+                <div class="fuzzy-tags">
+                    <span ng-hide="sc.tagsListLoaded" class="icon-spin5 animate-spin"></span>
+                    <ul>
+                        <li ng-repeat="tag in sc.tagsList track by $index" ng-class="{ 'selected': tag.selected }">
+                            <div class="tag-container-container">
+                                <div class="tag-container" ng-mouseleave="sc.leaveTag(tag)">
+                                    <div class="tag" ng-mouseenter="sc.hoverTag(tag)"
+                                         ng-click="sc.selectTag(tag)"
+                                         ng-class="{ 'positive': tag.direction == 'positive',
+                                                     'negative': tag.direction == 'negative',
+                                                     ''        : tag.direction == 'stagnant' }">{{ tag.term }}</div>
+                                    <tag-hover tag="tag"></tag-hover>
+                                </div>
+
+                                <div class="tag-quick-info">
+                                    <div class="trending">
+                                        <div ng-class="{ 'icon-up-open'   : tag.direction == 'positive',
+                                                         'icon-down-open' : tag.direction == 'negative',
+                                                         ''               : tag.direction == 'stagnant' }"></div>
+                                        {{ tag.tweet_percentage }}%
+                                    </div>
+                                    <div class="quantity">{{ tag.hour_quantity }}</div>
+                                </div>
+
+                                <div class="fr to-favorites" ng-show="!tag.favorite" ng-click="sc.favTag(tag)">
+                                    + Favorites
+                                </div>
+
+                                <div class="fr to-favorites" ng-show="tag.favorite" ng-click="sc.unFavTag(tag)">
+                                    - Favorites
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div ng-if="sc.init" class="overlay transparent" ng-click="sc.close()"></div>
+</section>

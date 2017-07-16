@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TickerTags Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Search engines -->
+    <meta name="author" content="TickerTags.com">
+    <meta name="description" content="All change is detectable.">
+    <meta name="revisit-after" content="30 days">
+    <link href="https://www.tickertags.com/dashboard" rel="canonical" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@tickertags">
+    <meta name="twitter:creator" content="@tickertags">
+    <meta name="twitter:title" content="TickerTags Dashboard">
+    <meta name="twitter:description" content="All change is detectable.">
+    <meta name="twitter:image:src" content="assets/static/tickertags-twitter.png">
+    <!-- Facebook -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="app">
+    <meta property="og:site_name" content="TickerTags dashboard">
+    <meta property="og:title" content="TickerTags | All change is detectable.">
+    <meta property="og:image" content="assets/static/logo@2x.png">
+    <meta property="og:url" content="https://www.tickertags.com/dashboard">
+    <meta property="og:description" content="All change is detectable.">
+    <!-- stylesheets -->
+    <link rel="icon" href="assets/static/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/static/apple-touch-icon.png">
+    <!-- build:app-css -->
+    <link href="assets/css/dashboard.css" rel="stylesheet"><!-- endbuild -->
+</head>
+
+<body ng-app="tickertags" id="body">
+<script src="https://js.stripe.com/v3/"></script>
+    <!--[if lt IE 11]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser.
+        Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ui-view></div>
+
+    <script type="application/ld+json">
+    {
+        "@context": {
+            "@type": "Application",
+            "name": "TickerTags",
+            "industry": "Financial",
+            "keywords": ["tickertags", "social listening", "startup", "stocks", "investing", "investors"],
+            "homepage": "https://tickertags.com",
+            "url": "https://tickertags.com",
+            "twitter": "https://twitter.com/tickertags",
+            "blog": "https://www.tickertags.com/blog/",
+            "ceo": { "name": "Chris Camillo" },
+            "founders": { "name": "Chris Camillo", "name": "Jordan McClain" },
+            "developers": { "name": "Leon Gaban", "name": "Paulo Darocha", "name": "Eric Bergerson", "name": "Wes Solomon" },
+            "team": { "name": "Laura Casey", "name": "Daria Woods", "name": "Ian Bryne", "name": "Jacob Allen", "name": "Trishul Seth" }
+        }
+    }
+    </script>
+
+    <!-- build:vendors -->
+    <script src="assets/js/libs/vendors.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:bundle-js -->
+    <script src="assets/js/tickertags.bundle.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

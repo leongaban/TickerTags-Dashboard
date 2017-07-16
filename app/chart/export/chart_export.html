@@ -1,0 +1,65 @@
+<div ng-class="{ 'feed-closed' : !ex.feedPanel }">
+    <section class="export-data-popover">
+        <header><h1>Export chart or CSV</h1></header>
+        <div>
+            <p class="csv-directions" ng-hide="ex.grouping == 'minute'">Select time interval:</p>
+            <div class="granularity">
+                <ul ng-if="ex.grouping == 'small'">
+                    <form>
+                        <div class="fl">
+                            <input type="radio" name="radio" class="radio"
+                                ng-model="ex.granularity"
+                                ng-change="ex.changeGranularity(ex.granularity)"
+                                value="minute" checked/> Minute
+                        </div>
+                        <div class="pl10">
+                            <input type="radio" name="radio" class="radio"
+                                ng-model="ex.granularity"
+                                ng-change="ex.changeGranularity(ex.granularity)"
+                                value="hour"/> Hour
+                        </div>
+                    </form>
+                </ul>
+    
+                <ul ng-if="ex.grouping == 'medium'">
+                    <form>
+                        <div class="fl">
+                            <input type="radio" name="radio" class="radio"
+                                ng-model="ex.granularity"
+                                ng-change="ex.changeGranularity(ex.granularity)"
+                                value="hour" checked/> Hour
+                        </div>
+                        <div class="pl10">
+                            <input type="radio" name="radio" class="radio"
+                                ng-model="ex.granularity"
+                                ng-change="ex.changeGranularity(ex.granularity)"
+                                value="day"/> Day
+                        </div>
+                    </form>
+                </ul>
+
+                <ul ng-if="ex.grouping == 'large'">
+                    <form>
+                        <div class="fl">
+                            <input type="radio" name="radio" class="radio"
+                                ng-model="ex.granularity"
+                                ng-change="ex.changeGranularity(ex.granularity)"
+                                value="day" checked/> Day
+                        </div>
+                        <div class="pl10">
+                            <input type="radio" name="radio" class="radio"
+                                ng-model="ex.granularity"
+                                ng-change="ex.changeGranularity(ex.granularity)"
+                                value="week"/> Week
+                        </div>
+                    </form>
+                </ul>
+            </div>
+            <button class="btn-green-filled"
+                    ng-click="ex.downloadCsv()"
+                    ng-class="{ 'disabled' : ex.disableDownload }"
+                    ng-disabled="ex.disableDownload">Download CSV</button>
+        </div>
+    </section>
+    <div class="overlay" ng-click="ex.cancel()"></div>
+</div>

@@ -1,0 +1,116 @@
+// Tag Filter Popover via _popovers.scss
+
+// Main classes ////////////////////////////////////////////
+.tags-filter-popover {
+    position: fixed;
+    z-index: 1050;
+    top: 200px;
+    left: 140px;
+    padding: 0;
+    width: 270px;
+    height: auto;
+    font-size: em(14);
+    text-align: left !important;
+    background: $gray_47;
+    border: 1px solid $gray3;
+    @include box-shadow(0 2px 10px rgba(50, 50, 50, 0.1));
+    @include transition(opacity, .3s, ease-in-out);
+    @include rounded(3px);
+    @include noselect();
+
+    &:before {
+        position: relative;
+        z-index: 99;
+        top: -8px;
+        left: 206px;
+        @include triangle(up, 8px, $gray_47);
+    }
+
+    &:after {
+        position: absolute;
+        z-index: 98;
+        top: -9px;
+        left: 205px;
+        @include triangle(up, 9px, $gray3);
+    }
+
+    section { display: block; padding: 10px 15px 15px 15px; }
+
+    li {
+        margin-bottom: 10px;
+        font-family: robotolight;
+        @include transition(color, .3s, ease-in-out);
+    }
+
+    li.active { font-family: robotobold; color: $green; }
+
+    li.disabled {
+        &:hover { color: $gray2 !important; }
+    }
+
+    .popover-header {
+        font-family: roboto_condensedbold;
+        font-size: em(10);
+        color: $gray2;
+    }
+
+    .categories,
+    .categories section { border-bottom: none; }
+    .gray-out { color: #ccc !important; }
+    .icon-cancel { float: right; right: 5px; }
+}
+
+.tags-filter-popover.ng-hide { opacity: 0; }
+
+.tag-platform,
+.tag-private,
+.tag-community {
+    li:not(.popover-header) {
+        span {
+            &:hover { color: $green; cursor: pointer; }
+        }
+    }
+}
+
+.tag-platform,
+.tag-private,
+.tag-categories {
+    color: #fff;
+    li div { color: $gray2; }
+}
+
+.tag-community {
+    ul { padding-bottom: 10px; border-bottom: 1px solid $gray2; }
+}
+
+.tag-options {
+    padding: 12px 20px 10px !important;
+    font-family: robotolight;
+    border-bottom: 1px solid $gray2;
+    input { margin: 0 5px 5px 0; }
+    .input-group { width: 100%; }
+}
+
+.personal-options ul { margin-left: 10px; }
+
+.tag-categories {
+    padding-bottom: 40px !important;
+    height: 300px;
+    overflow-y: hidden;
+    input { margin-right: 4px; }
+}
+
+.category-selection {
+    width: 240px;
+    height: 310px;
+    padding-right: 10px;
+    overflow-y: auto;
+    li, p { float: left; }
+    p { cursor: pointer; }
+    ul { position: relative; left: 1px; }
+    li { width: 100%; }
+
+    p.active {
+        color: $green;
+    }
+}

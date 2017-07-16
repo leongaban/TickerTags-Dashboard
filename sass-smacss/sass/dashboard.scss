@@ -1,0 +1,54 @@
+/*==========================================================
+TickerTags Dashboard - All change is detectable.
+============================================================
+
+stylesheets/
+|-- vendors/
+|   |-- _reset       	    	# Eric Meyer's reset v2.0.0
+|
+|-- modules/            	    # Partials
+|   |-- _base           	    # Imports all the modules
+|   	|-- _animation      	# CSS animations
+|   	|-- _colors         	# Colors
+|   	|-- _fonts          	# Fonts
+|   	|-- _mixins         	# Imports all mixins
+|
+|   |-- _defaults       	    # Global Defaults
+|   |-- _buttons
+|   |-- _fonts
+|   |-- _inputs
+|   |-- _layout
+|   	|-- header 				# Header styles
+|   	|-- notifications		# Notification messages
+|   	|-- alerts 				# Alerts panel
+|   	|-- tickers 			# Tickers panel
+|   	|-- tags 				# Tags panel
+|   	|-- chart 				# Chart styles
+|   	|-- social_media 		# News & Tweets
+|   	|-- user_settings 		# User settings
+|   	|-- notifications 		# Notifiction messages
+|   	|-- login 				# Login view
+|   	...
+|
+|   |-- _svg					# SVG background images
+|   |-- _queries				# Reponsive media queries
+|
+|-- vendors/
+|   |-- _normalize      	    # Nicolas Gallagher v3.0.2
+|   ...
+|
+`-- main_web				    # Primary Sass module
+*/
+
+@import "vendors/normalize"; 	// Normalize stylesheet
+@import "vendors/reset";		// Reset stylesheet
+@import "modules/base";			// Load base files
+@import "modules/defaults";		// Defaults elements
+@import "modules/inputs";		// Inputs & Selects
+@import "modules/buttons";		// Buttons
+@import "modules/popovers";     // Load popovers
+@import "modules/modals";       // Load Modals
+@import "modules/layout";       // Load Layouts
+@import "modules/svg";			// Load SVG
+@import "modules/queries";		// Media Queries
+@import "plugins/plugins";      // Plugins

@@ -1,0 +1,84 @@
+<div>
+    <div class="submit-alert">
+        <nav>
+            <h1>Choose Alert Type:</h1>
+            <div class="alert-types">
+                <ul>
+                    <li><input type="radio" ng-model="asub.alert.type" value="insight">Insight</li>
+                    <li><input type="radio" ng-model="asub.alert.type" value="spike">Breaking</li>
+                    <li><input type="radio" ng-model="asub.alert.type" value="momentum">Momentum</li>
+                </ul>
+            </div>
+            </ul>
+            <div class="icon-cancel" ng-click="asub.cancel()"></div>
+        </nav>
+
+        <form>
+        <!-- <form action="/" method="post" id="form-id" enctype="multipart/form-data" ng-submit="asub.submitAlertForm()"> -->
+        <!-- <form ng-app="fileUpload" name="form"> -->
+            <header class="fl">
+                <p ng-show="asub.alert.type == 'insight'"  class="info">Submitting an Insight Alert.</p>
+                <p ng-show="asub.alert.type == 'spike'" class="info">Submitting a Breaking Alert. (Highlight middle of spike and go forward, users will see 24hr padding)</p>
+                <p ng-show="asub.alert.type == 'momentum'" class="info">Submitting a Momentum Alert. (Highlight full range of momentum, users will see 24hr padding)</p>
+            </header>
+            <section class="alert-submission-content">
+                <section class="submit-left">
+                    <div class="w256px">
+                        <div class="ticker">{{ asub.alert.ticker }}</div>
+                        <ul>
+                            <li ng-repeat="tag in asub.alert.tags">
+                                <div class="fl tag">{{ tag.term }}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="submit-right">
+                    <div class="fl mbot20">
+                        <h1>Title</h1>
+                        <input class="w300px rounded4px" type="text" ng-model="asub.alert.title" name="title" placeholder="Title">
+                    </div>
+
+                    <div class="fl">
+                        <p>Description <span class="font12 gray2"> 1 paragraph, insert link like: [link title](link url) always use http or https, no www needed.</span></p>
+                        <textarea class="w300px rounded4px" ng-model="asub.alert.note"></textarea>
+                    </div>
+
+                    <div class="fl mbot10">
+                        <input class="w300px rounded4px" type="text" ng-model="asub.alert.mainLink" name="mainLink" placeholder="Article Link">
+                    </div>
+
+                    <div class="fl mbot20 w100" ng-show="asub.alert.type == 'insight'">
+                        <input ng-hide="asub.uploadingPDF" type="file" id="pdf-file-input" class="w300px rounded4px" name="file" placeholder="PDF file" onchange="angular.element(this).scope().fileNameChanged(this)">
+                        <div class="btn-remove-pdf" ng-click="asub.removePDF()"><div class="icon-cancel"></div></div>
+                    </div>
+                </section>
+            </section>
+
+            <section class="assco-tickers">
+                <ul>
+                    <li ng-repeat="ticker in asub.alert.tickers track by $index">
+                        <input type="checkbox" value="{{$index}}" ng-model="ticker.checked" ng-change="asub.tickerAlertCheck(ticker, modal.alertItem)" name="ticker" />
+                        {{ ticker.ticker }}
+                    </li>
+                </ul>
+            </section>
+
+            <section class="are-you-sure" ng-show="asub.confirmation">
+                <h1>You are about to submit a new alert, everything look ok?</h1>
+                <button class="fl btn-green-filled" ng-click="asub.submitAlertForm()">OK</button>
+                <button class="fl ml15 btn-red" ng-click="asub.cancelSubmit()">Cancel</button>
+            </section>
+
+            <button type="submit"
+                    ng-hide="asub.confirmation"
+                    class="btn-green-filled fl"
+                    value="Upload"
+                    ng-disabled="asub.submitting"
+                    ng-click="asub.submitClicked()">
+                    <!-- ng-click="asub.submitAlertForm()"> -->
+                    Submit <div ng-show="asub.submitting" class="fr icon-spin5 animate-spin"></div>
+            </button>
+        </form>
+    </div>
+    <div class="overlay" ng-click="asub.cancel()"></div>
+</div>

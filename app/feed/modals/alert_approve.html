@@ -1,0 +1,49 @@
+<div>
+    <section class="modal-help">
+        <form ng-submit="thu.approveAlert()">
+            <header class="fl-w100">
+                <p>Approve Alert (Must select Tickers)</p>
+                <!-- for 1 tag -->
+                <!-- for multiple tags -->
+                <ul>
+                    <li ng-repeat="tag in thu.terms">
+                        <div class="tag">{{ tag }}</div>
+                    </li>
+                </ul>
+
+                <span class="alert-modal-date">{{ thu.data }}</span>
+                <div class="icon-cancel big-x" ng-click="thu.cancel()"></div>
+            </header>
+
+            <section class="headline-text">
+                <h1>All fields optional</h1>
+                <textarea name="textarea" rows="1" cols="60" ng-model="thu.alertTitle" placeholder="Headline"></textarea>
+            </section>
+
+            <section class="headline-text">
+                <h2>1 paragraph, insert link like: [link title](link url) always use http or https, no www needed.</h2>
+                <textarea name="textarea" rows="3" cols="60" ng-model="thu.alertNote" placeholder="Description"></textarea>
+            </section>
+
+            <section class="headline-text">
+                <input class="rounded4px w480px" type="text" ng-model="thu.alertLink" placeholder="Article Link">
+            </section>
+
+            <div class="alert-modal-tickers">
+                <span ng-hide="thu.alertItem.tickers.length == 1" class="select-all-alert-tickers"><input type="checkbox" ng-model="thu.checkAllTickers" ng-change="thu.checkAllSwitch()" id="select-all-tickers" name="all-tickers"/> <label for="select-all-tickers">Select All <em>(Must select Ticker)<em></label></span>
+
+                <span class="fl-w100">
+                    <ul>
+                        <li ng-repeat="tik in thu.tickers track by $index">
+                            <input type="checkbox" value="{{$index}}" ng-model="tik.checked" ng-change="thu.tickerAlertCheck(tik)" id="tickerSelect{{$index}}" name="ticker" />
+                            {{ tik.ticker }}
+                        </li>
+                    </ul>
+                </span>
+            </div>
+
+            <button class="btn-modal" ng-disabled="thu.noneChecked">Thumbs Up!</button>
+        </form>
+    </section>
+    <div class="overlay" ng-click="thu.cancel()"></div>
+</div>

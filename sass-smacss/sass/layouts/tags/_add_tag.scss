@@ -1,0 +1,96 @@
+/* Add Tag Modal
+============================================================
+========================================================= */
+
+.modal-add-tag,
+.modal-help {
+    float: left;
+    position: relative;
+    z-index: 1050;
+    left: -50%;
+    background: $gray4;
+    padding: 20px;
+    @include rounded(6px);
+
+    h1 { float: left; margin: 7px 0 15px 0; font-size: em(18); color: #fff; }
+    input { padding: 4px 10px; border: 1px solid $gray2; @include rounded(4px); }
+    p { margin: 10px 0; line-height: 20px; text-align: left; color: $gray2; }
+    a { color: $green; text-decoration: none; &:hover { text-decoration: underline; } }
+
+    .icon-help-circled { text-align: center; }
+
+    .btn-green-filled {
+        float: right;
+        margin: 15px auto 0;
+        padding: 5px 0;
+        width: 100px;
+        height: 45px;
+    }
+}
+
+.modal-add-tag {
+    width: 520px;
+    input { width: 500px; height: 30px; }
+    .icon-help-circled {
+        &:hover { color: $green; }
+    }
+}
+
+.modal-help { width: 500px; }
+
+.clear-none {
+    li   { float: left; }
+    .tag { clear: none; }
+}
+
+.modal-add-tag-header {
+    width: 100%;
+    .icon-cancel {
+        float: right;
+        left: 15px;
+        top: -10px;
+        font-size: em(32);
+    }
+}
+
+.add-tag-options { float: left; margin-bottom: 15px; width: 100%; }
+.add-tag-category,
+.add-tag-visibility { float: left; }
+
+.add-tag-category { margin-right: 20px; width: 200px; }
+.add-tag-visibility { width: 300px; }
+
+.similar-tags-results {
+	float: left;
+    margin-top: 20px;
+	width: 498px;
+    height: 200px;
+	background: $gray4; 
+	border: 1px solid $gray3;
+
+	.search-tags {
+		padding: 0px 0 10px 10px;
+		width: 478px;
+		border: none;
+		h1 { font-family: 'robotolight'; font-size: em(13); color: $gray2 !important; }
+	}
+
+	.tag-container { width: 100%; }
+	.fuzzy-tags { min-height: 148px; height: 148px; }
+	.tag { padding: 2px 6px; font-size: 12px; }
+	.icon-cancel { top: -25px; right: 0; }
+}
+
+.ats-ticker-modifier {
+    top: 0 !important;
+	padding: 3px 8px !important;
+    font-size: em(11) !important;
+
+    li { float: left; margin-right: 5px; }
+
+    .ticker {
+    	margin: -3px 5px 10px 0;
+    	padding: 0px 8px;
+    	font-size: em(10);
+    }
+}

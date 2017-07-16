@@ -1,0 +1,35 @@
+<div id="settings-view">
+	<section class="platform-header">
+		<header>
+			<div ui-sref="dashboard" class="tickertags-logo"></div>
+			<div ng-click="stc.logout()" class="inactive-logout">Logout</div>
+		</header>
+	</section>
+	<section class="settings-body">
+		<header class="settings-header">
+			<div class="switch-btn-container">
+				<ul>
+					<li
+						ng-class="{ 'active' : stc.default }"
+						ng-click="stc.clickSettingsTab('default')">
+						<div class="switch-btn switch-left">User settings</div>
+					</li>
+					<li
+						ng-class="{ 'active' : !stc.default }"
+						ng-click="stc.clickSettingsTab('alerts')">
+						<div class="switch-btn switch-right">Alert panel settings</div>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+		<div ng-if="stc.default">
+			<settings-default-component></settings-default-component>
+		</div>
+
+		<div ng-if="!stc.default">
+			<settings-alerts-component></settings-alerts-component>
+		</div>
+
+	</section>
+</div>

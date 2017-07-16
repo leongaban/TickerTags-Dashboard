@@ -1,0 +1,124 @@
+/* Notification modals
+============================================================
+========================================================= */
+
+// Main classes
+// ---------------------------------------------------------
+.overlay {
+    display: block;
+    position: fixed;
+    z-index: 1044;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .6;
+    cursor: pointer;
+}
+
+.overlay.transparent { opacity: 0; }
+
+.modal-window { display: none; }
+
+.dash-modal { position: fixed; z-index: 1050; top: 15%; left: 50%; }
+
+.modal-default {
+    position: fixed;
+    z-index: 1050;
+    margin: 0 auto;
+    margin-left: -250px;
+    padding: 20px;
+    width: 500px;
+    font-family: 'robotolight';
+    line-height: 24px;
+    background: $gray4;
+    border: 1px solid #000;
+    -webkit-box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.4);
+    box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.4);
+    @include rounded(4px);
+
+    hr {
+        margin: 15px 0;
+        height: 0px;
+        border-top:    1px solid $gray_47;
+        border-left:   1px solid $gray_47;
+        border-right:  1px solid $gray_47;
+        border-bottom: 1px solid $gray_47;
+        background: $gray_47;
+    }
+
+    a { font-size: em(14); color: $green; text-decoration:underline; cursor: pointer; }
+
+    p { margin: 20px 0; text-align: center; color: #fff; }
+
+    .ticker { float: left; top: 3px; margin-left: 10px; padding: 6px 10px; clear: none; cursor: default; }
+
+    .icon-credit-card,
+    .icon-attention-1,
+    .icon-help-circled { text-align: center; }
+    
+    .icon-attention-1 { color: $red; }
+
+    .x-splash { position: absolute; top: -35px; right: -10px; }
+    
+    .btn-gray { text-align: center; padding-right: 0; padding-left: 0; border: 0; cursor: pointer; }
+
+    .signup-btn { width: 100%; } // submit payment button in update_card template
+}
+
+// Approve Alert ///////////////////////////////////////////
+.modal-thumbsup-alert {
+    position: relative;
+    z-index: 1050;
+    top: 15%;
+    .icon-thumbs-up-alt { margin-bottom: 15px; width: 100%; text-align: center; color: $green; }
+}
+
+.headline-text {
+    margin-bottom: 10px;
+    h2 { margin-bottom: 10px; font-size: em(12); color: $gray2; }
+    textarea { padding: 10px; width: 480px; @include rounded(4px); }
+    input { padding: 10px; width: 495px; border: 1px solid $gray2; }
+}
+
+.alert-modal-date { position: relative; top: 10px; color: $tag_yellow; font-size: em(14); }
+
+.select-all-alert-tickers { float: left; margin-bottom: 10px; color: #fff; width: 100%; font-size: 12px; }
+
+.alert-modal-tickers {
+    float: left;
+    li { float: left; margin: 0 10px 10px 0; font-size: em(11); color: #fff; }
+    em { color: $gray2; }
+}
+
+.modal-wes {
+    input { margin-bottom: 10px; }
+    input, textarea { padding: 10px; border: 1px solid $gray4; @include rounded(4px); }
+}
+
+// Add custom tag //////////////////////////////////////////
+.added-as    { float: left; margin-top: 10px !important; }
+.right-arrow { float: left; margin-top: 8px; }
+
+.submitting-public {
+    padding: 7px 10px;
+    color: #fff;
+    background: $gray3;
+    border: 1px dotted $gray4;
+    @include rounded(6px);
+}
+
+.btn-modal {
+    margin-top: 10px;
+    padding: 12px 0;
+    width: 100%;
+    font-family: robotoregular;
+    color: #fff;
+    background: $green;
+    border: 2px solid $green;
+    @include rounded(4px);
+    @include transition(all, .25s, ease-out);
+    &:hover { color: $green; background: #fff; }
+}

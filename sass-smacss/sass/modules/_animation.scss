@@ -1,0 +1,282 @@
+/* Animations
+============================================================
+========================================================= */
+
+// .animated {
+//     -webkit-animation-duration: 1s;
+//     animation-duration: 1s;
+//     -webkit-animation-fill-mode: both;
+//     animation-fill-mode: both;
+// }
+
+// ui-bootstrap:
+// .ng-animate.item:not(.left):not(.right) {
+//   -webkit-transition: 0s ease-in-out left;
+//   transition: 0s ease-in-out left
+// }
+
+.icon-spin5 {
+    position: absolute;
+    opacity: 0.4;
+    z-index: 10;
+    @include transition(opacity, .5s, ease-in-out);
+}
+
+.icon-spin5.ng-hide { opacity: 0; }
+
+.ticker-li,
+.tag-li {
+    position: relative;
+    opacity: 1;
+    @include transition(all, .5s, ease-in-out);
+}
+
+.animate-spin {
+    -moz-animation: spin 2s infinite linear;
+    -o-animation: spin 2s infinite linear;
+    -webkit-animation: spin 2s infinite linear;
+    animation: spin 2s infinite linear;
+    display: inline-block;
+}
+
+.fade-1 {
+  animation-name: fade-1;
+  -webkit-animation-name: fade-1; 
+
+  animation-duration: 1.5s; 
+  -webkit-animation-duration: 1.5s;
+
+  animation-timing-function: ease-in-out; 
+  -webkit-animation-timing-function: ease-in-out;   
+
+  visibility: visible !important; 
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn; 
+
+  animation-duration: 1.5s; 
+  -webkit-animation-duration: 1.5s;
+
+  animation-timing-function: ease-in-out; 
+  -webkit-animation-timing-function: ease-in-out;   
+
+  visibility: visible !important; 
+}
+
+.fade-from-right {
+    position: relative;
+    animation-name: fadeFromRight;
+    -webkit-animation-name: fadeFromRight; 
+    animation-duration: 0.5s; 
+    -webkit-animation-duration: 0.5s;
+    animation-timing-function: ease-in-out; 
+    -webkit-animation-timing-function: ease-in-out;   
+}
+
+.pulse {
+    animation-name: pulse;
+    -webkit-animation-name: pulse;  
+
+    animation-duration: 1.5s;   
+    -webkit-animation-duration: 1.5s;
+
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+
+.fader {
+    position: relative;
+    animation-name: fader;
+    -webkit-animation-name: fader; 
+    animation-duration: 3s; 
+    -webkit-animation-duration: 3s;
+    animation-timing-function: ease-in-out; 
+    -webkit-animation-timing-function: ease-in-out;   
+
+    animation-iteration-count: 3;
+    -webkit-animation-iteration-count: 3;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.7;       
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1; 
+    }   
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;   
+    }           
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-transform: scale(0.95);
+        opacity: 0.7;       
+    }
+    50% {
+        -webkit-transform: scale(1);
+        opacity: 1; 
+    }   
+    100% {
+        -webkit-transform: scale(0.95);
+        opacity: 0.7;   
+    }           
+}
+
+@keyframes fade-1 {
+    0% { opacity: 0.0; }
+    80% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+@-webkit-keyframes fade-1 {
+    0% { opacity: 0.0; }
+    80% { opacity: 1;  }
+    100% { opacity: 1; }   
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    color: $green;
+  }
+  80% {
+    opacity: 1; 
+  } 
+  100% {
+    opacity: 1; 
+    color: $gray2;
+  }   
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    color: $green;
+  }
+  80% {
+    opacity: 1;
+  } 
+  100% {
+    opacity: 1;
+    color: $gray2;
+  }   
+}
+
+@keyframes fader {
+    0%   { opacity: 0.2; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+@-webkit-keyframes fader {
+    0%   { opacity: 0.2; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+@keyframes fadeFromRight {
+    0%   { opacity: 0; left: 20px; }
+    80%  { opacity: 1; left: 0px; }
+    100% { opacity: 1; left: 0px; }
+}
+
+@-webkit-keyframes fadeFromRight {
+    0%   { opacity: 0; left: 20px; }
+    80%  { opacity: 1; left: 0px; }
+    100% { opacity: 1; left: 0px; }
+}
+
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-ms-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+// @-webkit-keyframes zoomIn {
+//     from { opacity: 0; -webkit-transform: scale3d(0.7,  0.7,  0.7); transform: scale3d(0.7,  0.7,  0.7); }
+//     50%  { opacity: 1; }
+// }
+
+// @keyframes zoomIn {
+//     from { opacity: 0; -webkit-transform: scale3d(0.7,  0.7,  0.7); transform: scale3d(0.7,  0.7,  0.7); }
+//     50%  { opacity: 1; }
+// }
+
+// .zoomIn { -webkit-animation-name: zoomIn; animation-name: zoomIn; }

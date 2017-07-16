@@ -1,0 +1,77 @@
+<div>
+	<header>
+		<!-- PlatformHeader -->
+		<!-- <platform-header container="tikp.container"></platform-header> -->
+		<platform-header></platform-header>
+		<!-- TimespanHeader -->
+		<time-span-header on-portfolio-update="tikp.onPortfolio(ticker, action)"></time-span-header>
+		<!-- ViewHeader -->
+		<!-- <view-header container="tikp.container"></view-header> -->
+		<view-header></view-header>
+	</header>
+	
+	<section ng-show="tikp.showTickersPanel" class="panel tickers-panel">
+		<section id="tickers-col" class="tickers-column column">
+			<div ng-hide="tikp.loadingTickersDone" class="icon-spin5 animate-spin"></div>
+
+			<ul ng-show="tikp.loadingTickersDone" class="tickers-list">
+				<li ng-class="{ 'selected' : tikp.spy.selected, 'spy-ticker' : tikp.spy.name == 'All Tickers' }">
+					<div class="ticker spy-ticker text-trans-normal"
+						 ng-click="tikp.spy.selected = !tikp.spy.selected; tikp.selectTicker(tikp.spy);">
+					     {{ :: tikp.spy.name }}
+					</div>
+				</li>
+
+				<li>
+					<div class="fl w100px">
+						<hr class="portfolio-hr" />
+					</div>
+				</li>
+
+				<li class="current-portfolio-name">
+					<div class="portfolio-name">Current Portfolio:</div>
+				</li>
+
+				<li class="portfolio-selector">
+					<div class="icon-left-open" ng-click="tikp.prevPortfolio()"></div>
+					<div class="portfolio-name">
+						<span class="mlneg5">{{ tikp.portfolio.name }}</span>
+					</div>
+					<div class="icon-right-open" ng-click="tikp.nextPortfolio()"></div>
+				</li>
+
+				<li>
+					<div class="ticker manage-portfolios" ng-click="tikp.openManagePortfolios(tikp.portfolios)">Manage Portfolios</div>
+				</li>
+
+				<li><div class="tag add-ticker-tag" title="Add a ticker" ng-click="tikp.openAddTickerModal(tikp.portfolio)">Add Ticker</div></li>
+				
+				<li ng-repeat="ticker in tikp.portfolio.tickers track by $index" id="{{ :: ticker.ticker }}"
+					ng-hide="ticker.removed"
+					ng-class="{'selected' : ticker.selected}">
+
+					<div class="tag-container" ng-mouseleave="tikp.leaveTicker(ticker)">
+					    <div class="ticker"
+					    	 ng-mouseenter="tikp.hoverTicker(ticker, $event)"
+					    	 ng-click="tikp.selectTicker(ticker);">
+					    	 <span ng-if="ticker.long && !ticker.hoverDisplay">
+					    	 	{{ ticker.short }}
+					    	 </span>
+					    	 <span ng-if="!ticker.long || ticker.hoverDisplay">
+					    	 	{{ ticker.ticker }}
+					    	 </span>
+					    </div>
+						<ticker-hover ticker="ticker" portfolio="tikp.portfolio" on-remove="tikp.removeTicker(ticker)"></ticker-hover>
+					</div>
+				</li>
+			</ul>
+
+			<div ng-show="tikp.noPortTickers" class="no-port-tickers">
+				You have no tickers in your Portfolio, use the <strong>Search</strong> above to view or add tickers to your Portfolio.
+			</div>
+		</section>
+	</section>
+	
+	<!-- TagsPanel Component -->
+    <tags-panel open="tikp.showTickersPanel"></tags-panel>
+</div>

@@ -1,0 +1,17 @@
+<div class="ticker-hover-container" ng-style="tkhov.ticker.pos" ng-show="tkhov.ticker.hoverDisplay">
+    <section class="ticker-info-padding">
+        <h1 ng-show="tkhov.ticker.current_ask"><em>$</em>{{ tkhov.ticker.current_ask }}</h1>
+        <h2>{{ tkhov.ticker.longname }}</h2>
+    </section>
+
+    <div class="tag-actions" ng-hide="tkhov.isSpy">
+        <div class="ticker-action-padding">
+            <!-- <div ng-hide="tkhov.inPortfolio" title="Add ticker to your portfolio"
+                 ng-click="tkhov.addTicker()">+ Portfolio</div> -->
+
+            <div ng-show="tkhov.ticker_remove" title="Remove ticker to your portfolio"
+                 ng-click="tkhov.removeTicker()" class="remove-from-portfolio">- Portfolio</div>
+        </div>
+    </div>
+    <div class="tags-hover-bg" ng-hide="tkhov.ticker.noOptions"></div>
+</div>

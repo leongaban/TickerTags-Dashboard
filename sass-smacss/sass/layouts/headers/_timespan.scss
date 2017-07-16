@@ -1,0 +1,151 @@
+/* TimeSpan Header
+============================================================
+========================================================= */
+
+.timespan-header {
+	position: fixed;
+	top: 50px;
+    padding: 15px 0 15px 0;
+    width: 100%;
+    min-width: 1100px;
+    height: 22px;
+    background: $gray4;
+    border-top: 1px solid lighten($gray4, 9%);
+    z-index: 1040;
+
+    .search {
+	    input {
+	        border: 1px solid darken($gray4, 6%);
+	        &:hover { border: 1px solid darken($green, 10%); }
+        	&:focus {  border: 1px solid $green; }
+	    }
+	}
+
+    .icon-search { float: left; margin-left: 10px; }
+}
+
+.timeheader-feed-open {
+    .time-controls { position: relative; right: 231px; }
+}
+
+.time-search-icon {
+	float: left !important;
+	left: 13px !important;
+	top: 4px !important;
+}
+
+.time-search-container {
+	position: absolute;
+    left: 30px;
+    top: 0px;
+}
+
+.search-input {
+    position: absolute;
+    z-index: 10000;
+    top: 10px;
+    left: 15px;
+    height: 30px;
+    @include rounded(4px);
+    input {
+    	padding: 5px 10px;
+    	width: 316px;
+    }
+}
+
+// Timespan controls:
+.graph-controls {
+    float: right;
+    position: relative;
+    top: -4px;
+    margin-right: 20px;
+    @include noselect();
+    li { float: left; margin-right: 15px; font-size: em(11); color: $gray_ticker; }
+}
+
+.timescale {
+    display: block;
+    float: left;
+    padding-left: 10px;
+}
+
+.timerange {
+    cursor: pointer;
+    &:hover, &.active { color: $green; }
+}
+
+.start-epoch-date,
+.end-epoch-date { float: left; }
+
+.start-epoch-date { margin-right: 5px; }
+
+.btn-set-range {
+    margin: -4px 0 0 5px;
+    padding: 6px 6px !important;
+    font-size: em(13) !important;
+    @include rounded(4px);
+    @include transition(background, .25s, ease-out);
+}
+
+.epoch-range-finder {
+    float: right;
+    position: relative;
+    z-index: 100;
+    padding-top: 2px;
+    margin-right: 20px;
+
+    p {
+        float: left;
+        margin: 3px 5px 0 0;
+        font-size: em(12);
+        color: $gray2;
+    }
+
+    input {
+        position: relative;
+        margin-top: -5px;
+        padding: 8px 6px;
+        width: 70px;
+        height: 11px;
+        font-family: 'roboto_condensedlight';
+        font-size: em(14);
+        line-height: 14px;
+        color: $gray0;
+        border: 1px solid darken($gray4, 5%);
+        background: lighten($gray_47, 2%);
+        // background: lighten($gray4, 1%);
+        @include transition(border, .25s, ease-out);
+        @include rounded(4px);
+        &:hover { border: 1px solid darken($green, 10%); }
+        &:focus {  border: 1px solid $green; }
+        // float: left;
+        // height: 16px;
+        // font-size: em(12);
+        // color: #fff;
+        // border: 1px solid $gray4;
+        // background: $gray3;
+        // @include rounded(4px);
+        // &:first-child { margin-right: 10px; }
+    }
+}
+
+.timespan-tooltip {
+    font-family: 'roboto_condensedlight';
+    background: lighten($gray_47, 5%);
+    border: 1px solid $gray3;
+    padding: 5% 5% 5% 5%;
+    position: absolute;
+    top:0;
+    left: 0;
+    //@include rounded(3px);
+}
+
+.timespan-tooltip-item { cursor: pointer; }
+
+.timespan-group {
+    position: absolute;
+    top: 18px;
+    font-size: 16px;
+    left: 10px;
+    .active { color: $green; }
+}

@@ -1,0 +1,71 @@
+/*  SVG background images
+============================================================
+========================================================= */
+
+.tickertags-logo,
+.tickertags-logo-big,
+.quick-filter-ico,
+.cash-gray-up,
+.trend-up,
+.trend-up-gray,
+.trend-down,
+.sentiment-ico,
+.sentiment-gray,
+.cash-sentiment-ico,
+.cash-sentiment-gray,
+.event-green,
+.event-gray,
+.csv {
+	position: relative;
+	background-size: 420px 420px;
+	background-image: url(../imgs/dashboard.svg), none;
+}
+
+.csv {
+    width: 18px;
+    height: 19px;
+    background-position: -101px -41px;
+    cursor: pointer;
+    &:hover { background-position: -81px -41px; }
+}
+
+.event-green,
+.event-gray { width: 13px; height: 11px; }
+
+.event-green { background-position: -2px -40px; }
+.event-gray  { background-position: -26px -40px; }
+
+.sentiment-ico,
+.sentiment-gray { float: left; margin: 6px 6px 0 6px; width: 10px; height: 12px; }
+
+.sentiment-ico { background-position: -47px -65px; }
+.sentiment-gray { background-position: -69px -65px; }
+
+.cash-sentiment-ico,
+.cash-sentiment-gray { float: left; margin: 6px 6px 0 3px; width: 14px; height: 13px; }
+
+.cash-sentiment-ico { background-position: -43px -85px; }
+.cash-sentiment-gray { background-position: -65px -85px; }
+
+.cash-gray-up {
+    float: left;
+    margin: 8px 5px 0 0;
+    width: 10px;
+    height: 12px;
+    background-position: -25px -105px;
+}
+
+.trend-up,
+.trend-up-gray,
+.trend-down    { float: left; margin-right: 5px; }
+.trend-up      { width: 12px; height: 12px; background-position: 0px -64px; }
+.trend-down    { width: 12px; height: 12px; background-position: -2px -144px; }
+.trend-up-gray { left: 3px; width: 12px; height: 12px; background-position: 0px -104px; }
+
+.quick-filter-ico {
+    width: 17px;
+    height: 20px;
+    cursor: pointer;
+    background-position: -40px -45px;
+    &:hover { background-position: -62px -45px; }
+}

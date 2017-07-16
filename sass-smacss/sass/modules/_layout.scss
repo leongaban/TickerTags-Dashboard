@@ -1,0 +1,67 @@
+/* Layouts
+============================================================
+========================================================= */
+
+// Login
+// ---------------------------------------------------------
+@import "../layouts/login";
+
+// alerts
+@import "../layouts/alert_submit";
+
+// Headers (Platform, View, Timespan)
+// ---------------------------------------------------------
+@import "../layouts/headers/headers";
+
+// Panels & common elements
+// ---------------------------------------------------------
+@import "../layouts/panels";
+
+// Feed tickers_panel
+// ---------------------------------------------------------
+@import "../layouts/feed/feed";
+@import "../layouts/feed/feed_settings";
+@import "../layouts/feed/feed_search";
+
+// Tickers tickers_panel
+// ---------------------------------------------------------
+@import "../layouts/tickers/tickers";
+@import "../layouts/tickers/ticker_hover";
+@import "../layouts/tickers/add_ticker";
+@import "../layouts/tickers/portfolios_modal";
+
+// Tags tickers_panel
+// ---------------------------------------------------------
+@import "../layouts/tags/tags";
+@import "../layouts/tags/tags_hover";
+@import "../layouts/tags/add_tag";
+
+// Analytics
+// ---------------------------------------------------------
+@import "../layouts/analytics/analytics";
+
+// Activity Panel
+// ---------------------------------------------------------
+@import "../layouts/activity/activity";
+
+// Chart
+// ---------------------------------------------------------
+@import "../layouts/chart/chart_header";
+@import "../layouts/chart/highchart";
+
+// SocialMedia
+// ---------------------------------------------------------
+@import "../layouts/social/social_media";
+@import "../layouts/social/social_tabs";
+
+// User Settings
+// ---------------------------------------------------------
+@import "../layouts/settings";
+@import "../layouts/alertsettings";
+
+// Papagaio
+@import "../layouts/papagaio";
+
+
+// Subscription
+@import "../layouts/subscription";

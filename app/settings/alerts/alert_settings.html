@@ -1,0 +1,162 @@
+<section class="user-settings-view alert-setting-container">
+    <form ng-submit="sta.submitFeedSettings()" novalidate>
+        <div class="user-settings-content">
+
+            <header></header>
+
+            <div class="icon-cancel big-x" ng-click="sta.backToDash()"></div>
+
+            <section class="alert-setting-options">
+                <section class="alert-options alert-filters m20">
+                    <div>
+                        <h2 class="fl">Alert Filters</h2>
+                        <span class="fl">
+                            <div class="fl ml10 yellow font13">* (Coming soon)</div>
+                            <div class="fl ml10 blue font13">** Highly sensitive and fully automated (not screened or verified by TickerTags analysts).</div>
+                        </span>
+                    </div>
+                    <table class="fl w100">
+                        <tr>
+                            <td>
+                                <input type="checkbox" ng-model="sta.tag_insight" title="insights" ng-click="sta.setFilter('tag_insight')" value="Insight">
+                            </td>
+                            <td><div class="icon-lightbulb"></div></td>
+                            <td><label for="insights">Tag Insights</label></td>
+                            <td><p>Tag insights issued by TickerTags research analysts</p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" ng-model="sta.event_breaking" name="tag_breaking" value="Breaking" ng-click="sta.setFilter('event_breaking')">
+                            </td>
+                            <td><div class="event-gray"></div></td>
+                            <td><label for="tag_breakings">Event Tag Breaking <span class="yellow">*</span><span class="blue">**</span></label></td>
+                            <td><p>Sudden increase in event tag (e.g. Disney +bomb, Wells Fargo + SEC Investigation) mention frequency</p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" ng-model="sta.tag_breaking" name="tag_breaking" value="Breaking" ng-click="sta.setFilter('tag_breaking')">
+                            </td>
+                            <td><div class="icon-up-open"></div></td>
+                            <td><label for="tag_breakings">Tag Breaking</label></td>
+                            <td><p>Sudden material increase in tag mention frequency</p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" ng-model="sta.cash_breaking" name="tag_breaking" ng-click="sta.setFilter('cash_breaking')" value="Breaking">
+                            </td>
+                            <td><div class="cash-gray-up"></div></td>
+                            <td><label for="tag_breakings" title="Being developed">CashTag Breaking <span class="yellow">*</span></label></td>
+                            <td><p title="Being developed">Sudden material increase in cashtag (e.g. $AAPL) mention frequencyy</p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" ng-model="sta.tag_momentum" name="momentum" ng-click="sta.setFilter('tag_momentum')" value="Momentum">
+                            </td>
+                            <td><div class="trend-up"></div></td>
+                            <td><label for="momentum">Tag Momentum</label></td>
+                            <td><p>Sustained upward/downward movement in tag mention frequency</p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" ng-model="sta.cash_momentum" name="momentum" ng-click="sta.setFilter('cash_momentum')" value="Momentum">
+                            </td>
+                            <td><div class="trend-up-gray"></div></td>
+                            <td><label for="momentum" title="Being developed">CashTag Momentum <span class="yellow">*</span></label></td>
+                            <td><p title="Being developed">Sustained upward/downward movement in cashtag (e.g. $AAPL) mention frequency</p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" ng-model="sta.tag_sentiment" name="sentiment" ng-click="sta.setFilter('tag_sentiment')" value="Sentiment">
+                            </td>
+                            <td><div class="sentiment-gray"></div></td>
+                            <td><label for="momentum" title="Being developed">Tag Sentiment <span class="yellow">*</span></label></td>
+                            <td><p title="Being developed">Material change in sentiment for a given tag</p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" ng-model="sta.cash_sentiment" name="sentiment" ng-click="sta.setFilter('cash_sentiment')" value="Sentiment">
+                            </td>
+                            <td><div class="cash-sentiment-gray"></div></td>
+                            <td><label for="sentiment" title="Being developed">CashTag Sentiment <span class="yellow">*</span></label></td>
+                            <td><p title="Being developed">Material change in sentiment for a given cashtag (e.g. AAPL)</p></td>
+                        </tr>
+                        <!-- <tr>
+                            <td colspan="4">
+                                <div class="fl mt15 w100 yellow font13">* (Coming soon)</div>
+                                <div class="fl mt15 w100 blue font13">** Event Tag Breaking alert settings are highly sensitive and fully automated (not screened or verified by TickerTags analysts).</div>
+                            </td>
+                        </tr> -->
+                    </table>
+                </section>
+
+                <section class="alert-options m20">
+                    <h2>Alert Scope</h2>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="radio" ng-model="sta.alertScope" ng-change="sta.setAlertScopeAll(true)" name="allTickers" value="all">
+                            </td>
+                            <td><label for="allTickers">All Tickers</label></td>
+                            <td><p>Receive alerts for all tickers</p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" ng-model="sta.alertScope" ng-change="sta.setAlertScopeAll(false)" name="portfolioTickers" value="portfolio">
+                            </td>
+                            <td><label for="portfolioTickers">Portfolio Tickers</label></td>
+                            <td><p>Receive tag and cashtag alerts only for your Portfolio Tickers (tag insight alerts always received for all tickers)</p></td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section class="alert-options alert-notifications m20">
+                    <h2>Alert Notifications <em>(in addition to in-app)</em></h2>
+                    <div class="fl w100 mbot15">
+                        <ul>
+                            <li>
+                                <h3>Email:</h3>
+                            </li>
+                            <li>
+                                <input type="checkbox" ng-model="sta.emailSummary" name="email" ng-change="sta.setEmailSummary()" value="Email">
+                                <label for="Email"><span>3/day Digest (pre/lunch/post market)</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" ng-model="sta.emailRealtime" name="email" ng-change="sta.setEmailRealtime()" value="Email">
+                                <label for="Email"><span>Unlimited (Real-time)</span></label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="fl w100">
+                        <ul>
+                            <li>
+                                <h3>SMS:</h3>
+                            </li>
+                            <li class="pos-rel ml6">
+                                <input type="checkbox" ng-model="sta.checkSMS" name="sms" ng-change="sta.setSMS()" value="SMS">
+                                <label for="SMS"><span>(8AM – 5PM ET)</span></label>
+                                <span class="sms-number-container" ng-show="sta.checkSMS">
+                                    <input type="text" ui-mask="999-999-9999" ng-model="sta.smsNumber">
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+
+            <section class="settings-buttons"> 
+                <div class="alert-settings-btns-container">
+                    <ul>
+                        <li>
+                            <button type="submit" class="btn-settings-save btn-green-filled">Save Changes</button>
+                        </li>
+                        <li ng-show="sta.hasError">
+                            <p class="default-errors">{{ sta.errorMsg }}</p>
+                            <div ng-click="sta.closeErrorMsg()" class="icon-cancel"></div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </form>
+</section>

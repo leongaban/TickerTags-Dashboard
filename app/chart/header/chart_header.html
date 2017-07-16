@@ -1,0 +1,80 @@
+<section id="chart-header" class="chosen-ticker-details" ng-class="{ 'widen-element' : ch.chartHeaderExpanded }">
+    <header>
+        <section ng-hide="ch.chart_max">
+            <div class="tag-collapse-btn tag-collapser-bg"
+                 ng-hide="ch.chartHeaderExpanded"
+                 ng-click="ch.collapseTagsPanel()">
+                <div id="tags-collapse" title="Collapse Ticker &amp; Tags panel">
+                    <div class="icon-left-open"></div>
+                </div>
+            </div>
+            <div class="tag-expander-bg"
+                 ng-show="ch.chartHeaderExpanded"
+                 ng-click="ch.openTagsPanel()">
+                <div id="tags-expand" title="Expand Ticker &amp; Tags panel">
+                    <div class="icon-right-open"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ticker-price-info" ng-class="{ 'ch-smaller-txt' : ch.smallText }">
+            <ul>
+                <li>
+                    <div class="chosen-ticker">
+                        <h1>{{ ch.ticker }}</h1>
+                        <span title="vm.originaCompanyName">{{ ch.companyName }}</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="current-price" ng-hide="ch.hidePrice">
+                        <em>$</em> <span>{{ ch.price }}</span>
+                    </div>
+                </li>
+                <li class="percentage-change" ng-hide="ch.hidePercent">
+                    <span ng-class="{ 'positive': ch.positive, 'negative': ch.negative, 'default': ch.stagnant }">
+                        <span ng-show="ch.positive" class="modifier">+</span> {{ ch.amount }} ({{ ch.percent }}%)
+                    </span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="extra-chart-options" ng-class="{ 'right300' : ch.right300 }">
+            <ul>
+                <li ng-click="ch.screenshotChart()">
+                    <div title="Download chart screenshot">
+                        <span class="hide-under-1300 fl">
+                            <span class="ico-descriptions">Screenshot</span>
+                        </span>
+                        <div class="icon-picture"></div>
+                    </div>
+                </li>
+                <li>
+                    <div title="Export your data" ng-click="ch.openExport()">
+                        <span class="hide-under-1300 fl">
+                            <span class="ico-descriptions">Export</span>
+                        </span>
+                        <div class="csv fl"></div>
+                    </div>
+                </li>
+                <li ng-click="ch.toggleChartAlerts(ch.chartAlerts)">
+                    <span class="btn-chart-alerts hide-under-1300">Chart Alerts</span>
+                    <div ng-show="ch.chartAlerts"  class="icon-bell-alt" title="Chart Alerts are on"></div>
+                    <div ng-show="!ch.chartAlerts" class="icon-bell-off" title="Chart Alerts are off"></div>
+                </li>
+                <li ng-hide="ch.chart_max">
+                    <div class="icon-resize-full-1" title="Expand Chart" ng-click="ch.toggleChartMax()"></div>
+                </li>
+                <li ng-show="ch.chart_max">
+                    <div class="icon-resize-small-1" title="Shrink Chart" ng-click="ch.toggleChartMax()"></div>
+                </li>
+                <li ng-show="ch.showFeedExpander" class="feed-expand-btn">
+                    <div class="tag-collapser-bg" ng-class="{ 'left-0' : !ch.feed_open && !ch.tags_open }" ng-click="ch.expandFeedPanel()">
+                        <div id="feed-expand" title="Expand Alerts panel">
+                            <div class="icon-left-open"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </header>
+</section>

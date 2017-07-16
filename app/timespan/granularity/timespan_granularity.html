@@ -1,0 +1,8 @@
+<ul class="timespan-group">
+    <li>Granularity by:</li>
+        <!-- ng-class="tst.active(group)" -->
+    <li class="timespan-tooltip-item"
+        ng-repeat="group in tst.groups"
+        ng-class="{ 'active' : group == tst.default }"
+        ng-click="tst.change(group)">{{ group }}</li>
+</ul>

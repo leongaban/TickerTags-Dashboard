@@ -1,0 +1,44 @@
+<div>
+    <div class="modal-manage-portfolios modal-default">
+    	<header>
+    		<h1>Manage Portfolios</h1>
+    		<div class="icon-cancel big-x" ng-click="ports.cancel()"></div>
+    	</header>
+
+        <div class="fl mt10 w100 portfolios-container">
+        	<hr class="mt0">
+            <h3 class="tickers-preview font12">Tickers preview:</h3>
+        	<ul>
+        		<li ng-repeat="port in ports.portfolios">
+        			<div class="named-portfolio">
+	        			<h3>{{ port.name }}</h3>
+	        			<div class="port-asso-buttons fl">
+    						<div class="btn-gray w60px fl"
+                                 ng-click="ports.createEditPortfolio('edit', port)">Edit</div>
+    						<div class="btn-gray btn-red-bg w80px fl"
+                                 ng-hide="port.id == 1"
+                                 ng-click="ports.removePortfolio(port)">Remove</div>
+						</div>
+	        			<div class="port-asso-tickers">
+                            <ul>
+	        					<li ng-repeat="ticker in port.tickers | limitTo:3">
+	        						<div class="ticker">{{ ticker.ticker }}</div>
+	        					</li>
+	        					<li class="fl mr15">
+	        						<sub>...</sub>
+	        					</li>
+	        				</ul>
+	        			</div>
+
+        			</div>
+        		</li>
+        	</ul>
+        </div>
+        <hr>
+
+        <!-- <button class="btn-modal btn-close-tight btn-red" ng-click="ports.cancel()">Close</button> -->
+        <button class="btn-modal btn-create-portfolio" ng-click="ports.createEditPortfolio('create')">Create Portfolio</button>
+    </div>
+
+    <div class="overlay" ng-click="ports.cancel()"></div>
+</div>

@@ -1,0 +1,38 @@
+<section class="view-header" ng-class="{ 'view-chart-expanded' : vh.chartExpanded }">
+
+    <section class="viewing-tags">
+        <h1>VIEWING:</h1>
+        <div class="tag-collection">
+            <div class="view-header-ticker" ng-mouseleave="vh.leaveTicker(vh.tickerObj)">
+                <div class="ticker blue" ng-mouseenter="vh.hoverTicker(vh.tickerObj)">{{ :: vh.ticker }}</div>
+                <!-- <ticker-hover ticker="vh.tickerObj"></ticker-hover> -->
+            </div>
+
+            <ul class="view-tags-list">
+                <li ng-repeat="tag in vh.container track by $index">
+                    <div class="tag-container-container">
+                        <div class="tag-container" ng-mouseleave="vh.leaveTag(tag)">
+                            <div class="tag"
+                                 ng-mouseenter="vh.hoverTag(tag)"
+                                 ng-click="vh.removeTag(tag)">
+                                 {{ tag.term }}
+                                <div class="icon-cancel fr"></div>
+                            </div>
+
+                            <tag-hover tag="tag"></tag-hover>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="viewing-controls" ng-class="{ 'right250' : vh.feedOpen }">
+        <div ng-show="vh.showClearTags" class="clear-tags" ng-click="vh.clearTags()">Clear</div>
+        <div class="saved-views" ng-click="vh.share()">
+            <div class="icon-share"></div>
+            <span class="fl">Share Link</span>
+        </div>
+        <div class="saved-views" title="Load saved views" ng-click="vh.openSaveLoadViews()">My Saved Views</div>
+    </div>
+</section>

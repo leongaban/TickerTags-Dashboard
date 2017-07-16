@@ -1,0 +1,36 @@
+<div>
+    <div id="tags-filter" class="tags-filter-popover">
+        <div ng-click="tfil.cancel()" class="icon-cancel"></div>
+        <section class="tag-platform">
+            <ul>
+                <li class="popover-header">PLATFORM:</li>
+                <li ng-class="{ 'active' : tfil.allActive }" ng-click="tfil.filterBy('all')">
+                    <span>All Tags</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="tag-private">
+            <ul>
+                <li class="popover-header">PERSONAL:</li>
+                <li ng-class="{ 'active' : tfil.favoritesActive }" ng-click="tfil.filterBy('favorite')"><span>My Favorite Tags</span></li>
+                <li ng-class="{ 'active' : tfil.privateActive }"   ng-click="tfil.filterBy('private')"><span>My Private Tags</span></li>
+            </ul>
+        </section>
+
+        <section class="tag-categories">
+            <ul><li class="popover-header">CATERGORIES:</li></ul>
+
+            <div class="category-selection">
+                <ul>
+                    <li ng-repeat="cat in tfil.categories">
+                        <p ng-click="tfil.filterBy('category', cat)"
+                           ng-class="{ 'active' : tfil.selectedCategory == cat.category }">{{ cat.name }}</p>
+                        <div class="fr">{{ cat.count }}</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <div class="overlay transparent" ng-click="tfil.cancel()"></div>
+</div>

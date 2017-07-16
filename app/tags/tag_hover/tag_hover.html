@@ -1,0 +1,72 @@
+<div class="tags-hover-container"
+    ng-class="{ 'w440px' : tghov.lotsOfTags || tghov.tag.hasTopTerms }"
+    ng-style="tghov.tag.pos"
+    ng-show="tghov.tag.hoverDisplay">
+    <!-- ng-mouseleave="tghov.leave()"> -->
+    <div class="tag-info-padding">
+        <div class="pad0-10">
+            <div class="tweets-direction" ng-hide="!tghov.tag.quantity">
+                <div ng-show="tghov.tweet_percentage">
+                    <div ng-class="{ 'icon-up-open'   : tghov.direction == 'positive',
+                                     'icon-down-open' : tghov.direction == 'negative',
+                                     ''               : tghov.direction == 'stagnant' }">
+                    </div>
+                    <div class="tweet-percentage">{{ tghov.tag.tweet_percentage }}%</div>
+                </div>
+
+                <div class="tweet-count" ng-class="{ 'mtneg5' : !tghov.tag.tweet_percentage }">{{ tghov.tag.quantity }} tweets </div>
+                <div class="tag-category" ng-hide="tghov.hideCategory">Category: {{ tghov.tag.category }}</div>
+            </div>
+
+            <!-- <div class="tweet-count mt10" ng-show="!tghov.quantity">0 tweets</div> -->
+        </div>
+
+        <div ng-class="{ 'tags-fade': tghov.lotsOfTags }"></div>
+        
+        <div class="pad0-10">
+            <div class="associated-tags" ng-class="{ 'ton-of-tags': tghov.lotsOfTags }">
+                <div ng-show="tghov.loadingTickers">
+                    <span class="mt8 icon-spin5 animate-spin"></span>
+                </div>
+                <ul class="associated-tickers">
+                    <li ng-repeat="ticker in tghov.tag.tickers track by $index">
+                        <div class="tag-container" ng-mouseleave="tghov.leaveTicker(ticker)">
+                            <div class="ticker"
+                                 ng-mouseenter="tghov.hoverTicker(ticker)"
+                                 ng-click="tghov.selectTicker(ticker)">{{ ticker.ticker }}</div>
+                            <ticker-hover ticker="ticker"></ticker-hover>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="fl w100 font13 white-c" ng-show="tghov.tag.gettingTop">
+                    Fetching related top terms... <span class="icon-spin5 animate-spin"></span>
+                </div>
+
+                <ul class="top-terms" ng-show="tghov.tag.hasTopTerms">
+                    <li class="fl w100">
+                        <h4>Top related terms:</h4>
+                    </li>
+                    <li ng-repeat="tag in tghov.tag.top_terms">
+                        <span>{{ tag }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tag-actions" ng-hide="tghov.loadingTickers">
+        <div class="tag-actions-bumper"></div>
+        <div class="tag-action-padding" ng-class="{ 'h12' : tghov.loadingTickers }">
+            <div class="add-my-watchlist" ng-class="{'display-on' : tghov.tag.favorite == 0}"
+                 ng-click="tghov.addFavorite()" title="Add to Favorites">
+                 + My Favorites
+            </div>
+            <div class="add-my-watchlist" ng-class="{'display-on' : tghov.tag.favorite == 1}"
+                 ng-click="tghov.removeFavorite()" title="Remove from Favorites">
+                 - My Favorites
+            </div>
+        </div>
+    </div>
+    <div class="tags-hover-bg"></div>
+</div>

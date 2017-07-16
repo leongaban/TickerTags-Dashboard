@@ -1,0 +1,165 @@
+// Tabs ////////////////////////////////////////////////////
+#social-tabs-container {
+	padding: 10px;
+    height: 100%;
+
+    .social-content { min-width: 400px; }
+    .quick-filter-ico { float: left; left: 6px; margin-top: 5px; height: 13px; }
+
+    .social-content {
+		header, p, time { float: left; }
+    	header { margin-right: 20px; width: auto; }
+    	p { width: auto; }
+    	time { width: 100%; }
+    }
+}
+
+#social-tab-scroll {
+	float: left;
+	overflow-x: hidden;
+    overflow-y: auto;
+    height: calc(100% - 100px);
+    width: 100%;
+}
+
+.social-tabs-header {
+	float: left;
+	margin-bottom: 15px;
+    min-width: 650px;
+	height: 30px;
+	font-size: em(14);
+
+	.pos-rel { float: right; }
+
+	.twitter-filterting { 
+		float: left;
+		ul { margin-left: 10px; }
+		li:last-child { margin-left: 6px; }
+		label { font-size: em(12); color: #fff; }
+	}
+}
+
+.tweet-filter,
+.news-filter,
+.fin-filter,
+.blogs-filter,
+.reviews-filter,
+.video-comments-filter,
+.boards-filter,
+.forums-filter {
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    padding: 10px;
+    width: 200px;
+    color: #fff; background: $gray_47; border: 1px solid $gray3;
+    z-index: 1050 !important;
+    @include rounded(2px);
+
+    &:before {
+        position: relative;
+        top: -18px;
+        left: 170px;
+        z-index: 2;
+        @include triangle(up, 8px, $gray_47);
+    }
+
+    &:after {
+        position: absolute;
+        top: -9px;
+        left: 180px;
+        z-index: 1;
+        @include triangle(up, 8px, $gray3);
+    }
+
+    header {
+        margin-bottom: 10px;
+        padding: 0 !important;
+        font-family: 'roboto_condensedlight';
+        font-size: em(12);
+        color: $gray2;
+    }
+
+    input[type="checkbox"] { margin-right: 3px; }
+
+    li {
+        height: 7px;
+        margin-bottom: 10px; font-size: em(14);
+        font-family: 'roboto_condensedlight';
+    }
+
+    .icon-cancel { float: right; top: -25px; }
+}
+
+.boards-filter,
+.reviews-filter,
+.video-comments-filter,
+.forums-filter {
+    width: 180px;
+    input { float: left; margin-right: 5px; }
+    li p { float: left; font-size: em(11); }
+}
+
+.tweet-filter {
+    left: 20px;
+    &:before { left: 48px !important; }
+    &:after  { left: 58px !important; }
+}
+
+.news-filter,
+.blogs-filter,
+.fin-filter,
+.forums-filter {
+    width: 200px;
+    input { float: left; }
+    p { float: left; margin-left: 3px; font-size: em(11); }
+}
+
+.news-filter,
+.blogs-filter,
+.boards-filter,
+.reviews-filter,
+.video-comments-filter,
+.fin-filter { top: 30px; }
+
+.news-filter {
+	left: -47px;
+	&:before { left: 40px; }
+    &:after { left: 50px; }
+}
+
+.boards-filter {
+	left: -55px;
+	&:before { left: 40px; }
+    &:after { left: 50px; }
+}
+
+.social-tab-btn {
+	float: left;
+	padding: 8px 10px;
+	color: $gray2;
+	background: $gray4;
+	border-top: 1px solid lighten($gray4, 10%);
+	border-right: 1px solid lighten($gray4, 10%);
+	border-left: none;
+	cursor: pointer;
+	@include transition(color, .4s, ease-out);
+	@include transition(background, .4s, ease-out);
+	&:hover { color: $green; background: darken($gray4, 5%); }
+}
+
+.social-tab-btn.active {
+	color: $green;
+	background: $gray_47;
+	border-right: none;
+}
+
+.social-tab-btn:first-child { border-left: 1px solid lighten($gray4, 10%); }
+
+.social-tab-btn:last-child { margin-right: 0; }
+
+.social-tabs { height: 100%; }
+
+.thumbs-container {
+    float: right; position: relative; right: 20px; width: 65px;
+}

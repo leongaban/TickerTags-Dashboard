@@ -1,0 +1,212 @@
+<div class="feed-settings-modal">
+    <form ng-submit="fsd.submitFeedSettings()" novalidate>
+        <section class="feed-settings-header">
+            <header>
+                <h1>Alert Panel Settings</h1>
+                <div ng-click="fsd.closeFeedSettings()" class="icon-cancel big-x"></div>
+            </header>
+        </section>
+        <section class="feed-types" ng-show="fsd.isAdmin">
+            <h1>Admin Controls</h1>
+            <div class="fl w20" >
+                <div ng-click="fsd.notifications(fsd.enabled)" ng-hide="fsd.enabled" class="icon-toggle-off"></div>
+                <div ng-click="fsd.notifications(fsd.enabled)" ng-show="fsd.enabled" class="icon-toggle-on"></div>
+                <label ng-click="fsd.notifications(fsd.enabled)" >Notifications</label>
+            </div>
+            <div class="fl auto">
+                <p> Temporarily pause/resume alert notifications for this session.</p>
+                <span style="cursor: pointer;" class="blue font13" ng-click="fsd.test()" >Test</span>
+                <span style="cursor: pointer;" class="yellow font13" ng-click="fsd.ask()" >Request Permission</span>
+            </div>
+
+            <feed-settings-admin name="approved" status="true" title="Approved" description="Display alerts approved by curators"></feed-settings-admin>
+            <feed-settings-admin name="pending" status="false" title="Pending" description="Display alerts awaiting for approval by curators"></feed-settings-admin>
+        </section>
+
+        <section class="feed-types">
+            <h1>Alert Filters</h1>
+            <div class="alert-filtering-error" ng-show="fsd.alertFilteringError">
+                <p>1 filter must be selected</p>
+            </div>
+            <div>
+                <div class="fl">
+                    <div class="fl w20px">
+                        <input type="checkbox" ng-model="fsd.tagInsight" title="insights" ng-click="fsd.setFilterTypes('tag_insight')" value="Insight">
+                    </div>
+                    <div class="fl w20px">
+                        <div class="icon-lightbulb"></div>
+                    </div>
+                    <div class="fl">
+                        <label for="insights">Tag Insights</label>
+                    </div>
+                    <div class="fl auto">
+                        <p>Tag insights issued by TickerTags research analysts</p>
+                    </div>
+                </div>
+
+                <div class="fl">
+                    <div class="fl w20px">
+                        <input type="checkbox" ng-model="fsd.eventBreaking" name="tag_breaking" value="Breaking" ng-click="fsd.setFilterTypes('event-breaking')">
+                    </div>
+                    <div class="fl w20px">
+                        <div class="event-gray"></div>
+                    </div>
+                    <div class="fl">
+                        <label for="tag_breakings">Event Tag Breaking <span class="blue">**</span></label>
+                    </div>
+                    <div class="fl auto">
+                        <p>Sudden increase in event tag (e.g. Disney +bomb, Wells Fargo + SEC Investigation) mention frequency</p>
+                    </div>
+                </div>
+
+                <div class="fl">
+                    <div class="fl w20px">
+                        <input type="checkbox" ng-model="fsd.tagBreaking" name="tag_breaking" value="Breaking" ng-click="fsd.setFilterTypes('tag_breaking')">
+                    </div>
+                    <div class="fl w20px">
+                        <div class="icon-up-open"></div>
+                    </div>
+                    <div class="fl">
+                        <label for="tag_breakings">Tag Breaking</label>
+                    </div>
+
+                    <div class="fl auto">
+                        <p>Sudden material increase in tag mention frequency</p>
+                    </div>
+                </div>
+
+                <div class="fl">
+                    <div class="fl w20px">
+                        <input type="checkbox" ng-model="fsd.cashBreaking" name="tag_breaking" ng-click="fsd.setFilterTypes('cash-breaking')" value="Breaking">
+                    </div>
+                    <div class="fl w20px">
+                        <div class="cash-gray-up"></div>
+                    </div>
+                    <div class="fl">
+                        <label for="tag_breakings" title="Being developed">CashTag Breaking <span class="yellow">*</span></label>
+                    </div>
+                    <div class="fl auto">
+                        <p title="Being developed">Sudden material increase in cashtag (e.g. $AAPL) mention frequencyy</p>
+                    </div>
+                </div>
+
+                <div class="fl">
+                    <div class="fl w20px">
+                        <input type="checkbox" ng-model="fsd.tagMomentum" name="momentum" ng-click="fsd.setFilterTypes('tag_momentum')" value="Momentum">
+                    </div>
+                    <div class="fl w20px">
+                        <div class="trend-up"></div>
+                    </div>
+                    <div class="fl">
+                        <label for="momentum">Tag Momentum</label>
+                    </div>
+                    <div class="fl auto">
+                        <p>Sustained upward/downward movement in tag mention frequency</p>
+                    </div>
+                </div>
+
+                <div class="fl">
+                    <div class="fl w20px">
+                        <input type="checkbox" ng-model="fsd.cashMomentum" name="momentum" ng-click="fsd.setFilterTypes('cash-momentum')" value="Momentum">
+                    </div>
+                    <div class="fl w20px">
+                        <div class="cash-gray-up"></div>
+                    </div>
+                    <div class="fl">
+                        <label for="momentum" title="Being developed">CashTag Momentum <span class="yellow">*</span></label>
+                    </div>
+
+                    <div class="fl auto">
+                        <p title="Being developed">Sustained upward/downward movement in cashtag (e.g. $AAPL) mention frequency</p>
+                    </div>
+                </div>
+
+                <div class="fl">
+                    <div class="fl w20px">
+                        <input type="checkbox" ng-model="fsd.tagSentiment" name="sentiment" ng-click="fsd.setFilterTypes('sentiment')" value="Sentiment">
+                    </div>
+                    <div class="fl w20px">
+                        <div class="sentiment-gray"></div>
+                    </div>
+                    <div class="fl">
+                        <label for="momentum" title="Being developed">Tag Sentiment <span class="yellow">*</span></label>
+                    </div>
+                    <div class="fl auto">
+                        <p title="Being developed">Material change in sentiment for a given tag</p>
+                    </div>
+                </div>
+
+                <div class="fl">
+                    <div class="fl w20px">
+                        <input type="checkbox" ng-model="fsd.cashSentiment" name="sentiment" ng-click="fsd.setFilterTypes('sentiment')" value="Sentiment">
+                    </div>
+                    <div class="fl w20px">
+                        <div class="cash-sentiment-gray"></div>
+                    </div>
+                    <div class="fl">
+                        <label for="sentiment" title="Being developed">CashTag Sentiment <span class="yellow">*</span></label>
+                    </div>
+                    <div class="fl auto">
+                        <p title="Being developed">Material change in sentiment for a given cashtag (e.g. AAPL)</p>
+                    </div>
+                </div>
+
+                <div class="fl mt15 w100 yellow font13">* (coming soon) features</div>
+                <div class="fl mt15 w100 blue font13">** Event Tag Breaking alert settings are highly sensitive and fully automated (not screened or verified by TickerTags analysts).</div>
+            </div>
+        </section>
+
+        <section class="filtering-by-ticker">
+            <h1>Alert Scope</h1>
+            <ul>
+                <li class="float-left-short filtering-by-ticker-li">
+                    <input type="radio" ng-model="fsd.filterTickers" name="allTickers" ng-change="fsd.getAlertsFromAll(true)" value="all">
+                    <label for="allTickers">All Tickers</label>
+                    <p>Receive alerts for all tickers</p>
+                </li>
+                <li class="float-left-short filtering-by-ticker-li">
+                    <input type="radio" ng-model="fsd.filterTickers" name="portfolioTickers" ng-change="fsd.getAlertsFromAll(false)" value="portfolio">
+                    <label for="portfolioTickers">Portfolio Tickers</label>
+                    <p>Receive tag and cashtag alerts only for your Portfolio Tickers (tag insight alerts always received for all tickers)</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="alert-notification-options">
+            <h1>Alert Notifications <em>(in addition to in-app)</em></h1>
+            <div class="fl w100 mbot10">
+                <ul>
+                    <li>
+                        <h3>Email:</h3>
+                    </li>
+                    <li>
+                        <input type="checkbox" ng-model="fsd.emailSummary" name="email" ng-change="fsd.setEmailSummary()" value="Email">
+                        <label for="Email"><span>3/day Digest (pre/lunch/post market)</span></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" ng-model="fsd.emailRealtime" name="email" ng-change="fsd.setEmailRealtime()" value="Email">
+                        <label for="Email"><span>Unlimited (Real-time)</span></label>
+                    </li>
+                </ul>
+            </div>
+            <div class="fl w100">
+                <ul>
+                    <li>
+                        <h3>SMS:</h3>
+                    </li>
+                    <li class="pos-rel ml6">
+                        <input type="checkbox" ng-model="fsd.checkSMS" name="sms" ng-change="fsd.setSMS()" value="SMS">
+                        <label for="SMS"><span>(8AM – 5PM ET)</span></label>
+                        <span class="sms-number-container" ng-show="fsd.checkSMS">
+                            <input type="text" ui-mask="999-999-9999" ng-model="fsd.smsNumber">
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="feed-setting-buttons">
+            <button type="submit" class="btn-settings-save btn-green-filled">Save Changes</button>
+        </section>
+    </form>
+</div>

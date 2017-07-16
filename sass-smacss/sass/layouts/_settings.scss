@@ -1,0 +1,147 @@
+// User Settings
+////////////////////////////////////////////////////////////
+
+#settings-view {
+    position: relative;
+    z-index: 1043;
+    height: 5000px;
+    background: $gray_47;
+}
+
+.settings-body { padding-top: 50px; }
+
+.settings-header {
+    padding: 20px 20px 0 20px;
+    width: 100%;
+    height: 40px;
+    li { float: left; }
+}
+
+.user-settings-view {
+    width: 100%;
+    color: #fff;
+    background: $gray_47;
+    header h1 { color: #fff; }
+    h1 { color: $gray1; }
+}
+
+.user-settings-content {
+    margin: 0 auto;
+    width: 100%;
+    @include clearfix();
+
+    header {
+        float: left;
+        margin: 20px 0;
+        width: 100%;
+        border-bottom: 1px solid $gray3;
+        h1 { font-family: 'roboto_condensedlight'; color: #fff; }
+    }
+
+    .big-x { top: 70px; font-size: 3em; }
+}
+
+.close-settings {
+    margin-right: 15px;
+    font-size: em(14);
+    color: $green;
+    cursor: pointer;
+    &:hover { color: lighten($green, 10%); }
+}
+
+.account-details,
+.alert-setting-options,
+.settings-buttons { margin: 0 auto; width: 640px; }
+
+.account-details,
+.alert-setting-options {
+    position: relative;
+    top: 20px;
+    h2 { margin-bottom: 20px; font-family: 'roboto_condensedlight'; font-size: em(18); color: #fff; }
+    p  { font-family: 'robotolight'; font-size: em(14); color: $gray2; }
+}
+
+.alert-setting-options { margin: 0 auto; width: 800px; }
+
+.password-fields {
+    float: left;
+
+    input {
+        float: left;
+        margin-bottom: 10px;
+        padding: 10px;
+        width: 300px;
+        color: $gray4;
+        border: 2px solid $gray_light;
+        @include rounded(4px);
+        &:focus { outline: none; border-color: $green; }
+    }
+}
+
+.default-errors { float: left; margin-top: 8px; font-size: em(12); }
+
+p.reset-pass {
+    float: left;
+    margin-top: 8px;
+    font-size: em(12);
+    color: $green;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover { text-decoration: none; }
+}
+
+.clear-field { float: left; position: relative; top: 13px; left: 10px; }
+
+.settings-buttons {
+    position: absolute;
+    left: 0px;
+    margin-top: 500px;
+    padding: 40px 0;
+    width: 100%;
+    background: $gray4;
+    border-top: 1px solid $gray3;
+    border-bottom: 1px solid $gray3;
+}
+
+.btn-settings-save { padding: 6px 20px; }
+
+.alert-settings-btns-container,
+.save-password-btn-container {
+    button { float: left; padding-left: 20px; padding-right: 20px; }
+}
+
+.alert-settings-btns-container { margin: 0 auto; width: 800px; }
+
+.save-password-btn-container {
+    position: relative;
+    top: 126px;
+    left: 20px;
+    .icon-cancel { top: 6px; left: 6px; }
+}
+
+// Cancel subscription modal ///////////////////////////////
+.cancel-box,
+.update-box { float: left; }
+.cancel-box { margin-right: 20px; }
+
+.cancel-btn-container { margin: 0 auto; width: 250px; }
+
+.btn-cancel-sub {
+    width: 120px;
+    font-family: robotoregular;
+}
+
+.inactive-logout {
+    float: right;
+    color: $green;
+    margin: 10px 20px 0 0;
+    cursor: pointer;
+    &:hover { text-decoration: underline; }
+}
+
+// Renew styles ////////////////////////////////////////////
+.renew-section {
+    margin : 100px auto 0 auto;
+    width: 640px;
+    h1 { font-size: em(20) }
+}

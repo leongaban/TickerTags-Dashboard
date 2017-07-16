@@ -1,0 +1,70 @@
+<div>
+    <header class="quick-find">
+        <nav id="sort-carousel" class="tag-sort-carousel">
+            <div id="carousel-list">
+                <ul>
+                    <li ng-class="{ 'active' : tagp.sort == 'vol' }"   title="Sort tags by volume"   ng-click="tagp.sortTags('vol')">Vol</li>
+                    <li ng-class="{ 'active' : tagp.sort == 'trend' }" title="Sort tags by trending" ng-click="tagp.sortTags('trend')">Trend</li>
+                    <li ng-click="tagp.toggleComingSoon('popular')" class="opacity5">Pop</li>
+                    <li ng-click="tagp.toggleComingSoon('active')"  class="opacity5">Active</li>
+                    <li ng-click="tagp.openTagsFilter($event)">Filter</li>
+                </ul>
+            </div>
+            <div class="tag-icon-group">
+                <div class="quick-filter-ico" title="Tag filter options" ng-click="tagp.openTagsFilter($event)"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section ng-hide="tagp.onSPY" class="add-tag-section">
+        <div class="tag add-ticker-tag" title="Add your own custom tag" ng-click="tagp.openAddTagModal()">Add Tag</div>
+    </section>
+
+    <div class="search-tags-input search container-fluid">
+        <input type="text" class="form-control" placeholder="Search {{ tagp.ticker.ticker }} tags"
+               ng-model="tagp.tagSearchInput"
+               ng-change="tagp.tagsSearch(tagp.tagSearchInput)">
+
+        <div ng-show="tagp.showCloseSearch" class="icon-cancel" ng-click="tagp.closeTagSearch()"></div>
+        
+        <div class="tag-filter">
+            <p ng-hide="tagp.tagSearchInput !== ''" ng-click="tagp.openTagsFilter($event)" class="fl">
+                Filtered by {{ tagp.tags_filter }}<span ng-show="tagp.category">:</span> {{ tagp.category }}
+            </p>
+            <p class="fl w100" ng-show="tagp.tagSearchInput !== ''">
+                Searching through all tags for {{ tagp.tagSearchInput }}
+            </p>
+            <div ng-click="tagp.showHelp()" class="icon-help-circled fr"></div>
+        </div>
+    </div>
+
+    <!-- Tags Column -->
+    <section id="tagscol" class="tag-column column" du-scrollspy ng-class="{ 'disabled' : !tagp.tagsEnabled }">
+        <ul id="tags-panel-list">
+            <p ng-show="tagp.tags.length == 0" class="font13 gray2">No tags are available for this Ticker yet.</p>
+            <li ng-repeat="tag in tagp.tags track by $index" ng-class="{ 'selected' : tag.selected, 'tag-yellow' : tag.border1, 'tag-cyan' : tag.border2, 'tag-blue' : tag.border3 }">
+                <div class="tag-container-container" ng-mouseleave="tagp.leaveTag(tag)">
+                    <div class="tag-container">
+                        <div class="tag"
+                             ng-click="tagp.clickTag(tag)"
+                             ng-mouseenter="tagp.hoverTag(tag, $event)"
+                             ng-class="{ 'positive' : tag.direction == 'positive',
+                                         'negative' : tag.direction == 'negative',
+                                         ''         : tag.direction == 'stagnant' }">{{ :: tag.term }}</div>
+                        <tag-hover tag="tag"></tag-hover>
+                    </div>
+
+                    <div ng-hide="expanding" class="tag-quick-info">
+                        <div class="trending">
+                            <div ng-class="{ 'icon-up-open'   : tag.direction == 'positive',
+                                             'icon-down-open' : tag.direction == 'negative',
+                                             ''               : tag.direction == 'stagnant' }"></div>
+                            {{ :: tag.tweet_percentage }}%
+                        </div>
+                        <div class="quantity" title="Tweet quantity">{{ :: tag.quantity }}
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+</div>

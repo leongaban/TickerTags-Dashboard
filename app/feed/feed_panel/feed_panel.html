@@ -1,0 +1,179 @@
+<div ng-show="fp.showFeed">
+    <div>
+        <section id="feed-panel" class="feed-panel-container">
+
+            <header class="feed-panel-header">
+                <h1>ALERTS PANEL</h1>
+                <span ng-show="fp.loadingSpinner" class="icon-spin5 animate-spin"></span>
+                <div class="feed-collapse-container">
+                    <div id="feed-collapse"
+                         ng-mouseenter="fp.feedCollapseHover()"
+                         ng-mouseleave="fp.feedCollapseLeave()"
+                         ng-click="fp.closeFeedPanel()"
+                         title="Close Alerts Panel"></div>
+                    <div class="feed-collapse-bg" ng-class="{ 'feed-collapse-bg-hover' : fp.collapseHover }">
+                        <div class="icon-right-open"></div>
+                    </div>
+                </div>
+
+                <section class="feed-button-group">
+                    <div class="btn-feed-setting" ng-click="fp.gotoAlertSettings()">
+                        Alert Settings
+                        <!-- <div class="icon-sliders"></div> -->
+                    </div>
+                </section>
+            </header>
+
+            <div class="feed-search-area search">
+                <search on-ticker-result="fp.setTicker(ticker)" on-tag-result="fp.setTag(tag)"></search>
+            </div>
+
+            <section class="selected-feed-search-items" ng-show="fp.thereAreSearched">
+                <header><h1 class="filtering-by">Filtering alerts by:</h1></header>
+                <ul>
+                    <li ng-repeat="ticker in fp.searchedTickers track by $index">
+                        <div class="ticker" ng-click="fp.removeSearchItem('tickers', ticker)">{{ ticker }} <div class="icon-cancel"></div></div>
+                    </li>
+                </ul>
+                <ul>
+                    <li ng-repeat="tag in fp.searchedTags track by $index">
+                        <div class="tag" ng-click="fp.removeSearchItem('tags', tag)">{{ tag.term }} <div class="icon-cancel"></div></div>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="feed-col" class="feed-alerts">
+                <span ng-class="{ 'hide' : fp.noAlerts, 'hide' : fp.alertsLoaded }" class="icon-spin5 animate-spin"></span>
+
+                <p ng-show="fp.noAlerts" class="no-alerts">There are currently no alerts based on your filters and settings.</p> 
+
+                <ul>
+                    <li ng-repeat="f in fp.feed | adminFeed:fp.isAdmin " class="feed-item feeditem" ng-class="{ 'pad0' : f.approved != 1 }"> 
+                        <div class="feed-container-container">
+                            <section class="feed-container"> 
+                                 <section ng-if="f.type == 'tag_insight' || f.type == 'insight'"
+                                         ng-mouseleave="fp.leaveItem(f)"
+                                         ng-class="{ 'alert-tall' : f.hovered, 'fade-from-right' : f.new == true }" class="animate insight">
+                                    <div class="icon-lightbulb"></div>
+                                    <div class="insight-ticker-tags">
+                                        <div class="insight-ticker blue">{{ f.tickers[0] }}</div>
+                                        <div class="insight-tags-area">
+                                            <em class="insight-tag" ng-if="f.term_name_1">{{ f.term_name_1 }}</em>
+                                            <em class="insight-tag" ng-if="f.term_name_2">{{ f.term_name_2 }}</em>
+                                            <em class="insight-tag" ng-if="f.term_name_3">{{ f.term_name_3 }}</em>
+                                        </div>
+                                    </div>
+
+                                    <span class="hidden" ng-class="{ 'show' : f.hovered }">
+                                        <p class="alert-title">{{ f.title }}</p>
+                                        <p ng-bind-html=f.note></p>
+                                    </span>
+
+                                    <span ng-class="{ 'hide' : f.hovered }">
+                                        <p class="alert-title">{{ f.shortTitle }}</p>
+                                        <p class="alert-title" ng-show="!f.shortTitle">{{ f.title }}</p>
+                                        <p ng-bind-html=f.shortNote></p>
+                                        <p ng-show="!f.shortNote" ng-bind-html=f.note></p>
+                                        <p class="yellow" ng-show="f.shortNote" ng-click="fp.readMore(f)">Read more</p>
+                                    </span>
+
+                                    <div class="insight-actions">
+                                        <time>{{ f.hour }} | {{ f.date }}</time>
+                                        <div class="btn-alert" ng-show="f.pdf_btn" ng-click="fp.downloadPDF(f.insight_id, f.pdf_id)">PDF</div>
+                                        <div class="btn-alert btn-read" ng-show="f.hasLink" ng-click="fp.readLink(f)">Read</div>
+                                        <div class="btn-alert" ng-click="fp.clickAlert(f)">Chart</div>
+                                    </div>
+                                </section> 
+
+                                 <section ng-if="f.type == 'tag_breaking' || f.type == 'spike'"
+                                         ng-mouseleave="fp.leaveItem(f)"
+                                         ng-class="{ 'alert-tall' : f.hovered, 'fade-from-right' : f.new == true }" class="animate breaking pad-r20">
+
+                                    <p class="feed-info">
+                                        <div class="icon-up-open"></div>
+                                        <span class="white-c">Breaking:</span>
+                                        <span class="blue">{{ f.tickers[0] }}</span>
+                                        <span class="yellow">{{ fp.uiTerm(f.terms) }}</span>
+                                    </p>
+
+                                    <span class="hidden" ng-class="{ 'show' : f.hovered }">
+                                        <p class="alert-title">{{ f.title }}</p>
+                                        <p ng-bind-html=f.note></p>
+                                    </span>
+
+                                    <span ng-class="{ 'hide' : f.hovered }">
+                                        <p class="alert-title">{{ f.shortTitle }}</p>
+                                        <p class="alert-title" ng-show="!f.shortTitle">{{ f.title }}</p>
+                                        <span class="feed-item-note">
+                                            <p ng-bind-html=f.shortNote></p>
+                                        </span>
+                                        <p ng-show="!f.shortNote" ng-bind-html=f.note></p>
+                                        <p class="yellow" ng-show="f.shortNote" ng-click="fp.readMore(f)">Read more</p>
+                                    </span>
+
+                                    <div class="feed-item-details">
+                                        <em class="percent-change" ng-show="f.percent_change != 0">{{ f.percent_change }}%</em>
+                                        <time>{{ f.hour }} | {{ f.date }}</time>
+                                        <div class="btn-alert btn-read" ng-show="f.hasLink" ng-click="fp.readLink(f)">Read</div>
+                                        <div class="btn-alert" ng-click="fp.clickAlert(f)">Chart</div>
+                                    </div>
+                                </section> 
+
+                                 <section ng-if="f.type == 'tag_momentum' || f.type == 'momentum'"
+                                         ng-mouseleave="fp.leaveItem(f)"
+                                         ng-class="{ 'alert-tall' : f.hovered, 'fade-from-right' : f.new == true }" class="momentum pad-r20">
+
+                                    <p class="feed-info">
+                                        <div ng-show="f.percent_change >= 0" class="trend-up"></div>
+                                        <div ng-show="f.percent_change < 0" class="trend-down"></div>
+                                        <span class="white-c">Momentum: </span>
+                                        <span class="blue">{{ f.tickers[0] }} </span>
+                                        <span class="yellow">{{ fp.uiTerm(f.terms) }}</span>
+                                    </p>
+
+                                    <span class="hidden" ng-class="{ 'show' : f.hovered }">
+                                        <p class="alert-title">{{ f.title }}</p>
+                                        <p ng-bind-html=f.note></p>
+                                    </span>
+
+                                    <span ng-class="{ 'hide' : f.hovered }">
+                                        <p class="alert-title">{{ f.shortTitle }}</p>
+                                        <p class="alert-title" ng-show="!f.shortTitle">{{ f.title }}</p>
+                                        <p ng-bind-html=f.shortNote></p>
+                                        <p ng-show="!f.shortNote" ng-bind-html=f.note></p>
+                                        <p class="yellow" ng-show="f.shortNote" ng-click="fp.readMore(f)">Read more</p>
+                                    </span>
+
+                                    <div class="feed-item-details">
+                                        <em class="percent-change" ng-show="f.percent_change != 0" ng-class="{ 'red' : f.percent_change < 0}">{{ f.percent_change }}</em>
+                                        <span ng-class="{ 'red' : f.percent_change < 0}" ng-show="f.percent_change != 0">%</span>
+                                        <time>{{ f.hour }} | {{ f.date }}</time>
+                                        <div class="btn-alert" ng-click="fp.clickAlert(f)">Chart</div>
+                                    </div>
+                                </section> 
+                             </section> 
+
+                             <span class="feed-item-duration">Duration: {{ f.duration }}</span> 
+
+                             <section ng-show="fp.isAdmin && f.approved == 0 && f.type != 'insight'" class="admin-controls">
+                                <div class="btn-approve" ng-click="fp.approve(f, $index)">
+                                    <div class="icon-thumbs-up-alt"></div>
+                                </div>
+
+                                <div class="btn-deny" ng-click="fp.deny(f, $index)">
+                                    <div class="icon-thumbs-down-alt"></div>
+                                </div>
+
+                                <div class="btn-deny btn-deny-system" ng-click="fp.denyBadAlert(f)">
+                                    <div class="icon-block"></div>
+                                </div>
+                            </section> 
+                        </div> 
+                    </li> 
+                </ul> 
+            </section>
+
+        </section>
+        <div id="feed-panel-bg"></div>
+     </div> 
+</div>

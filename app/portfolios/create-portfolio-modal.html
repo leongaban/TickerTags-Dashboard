@@ -1,0 +1,46 @@
+<div>
+    <div class="modal-create-portfolio modal-default">
+        <div class="modal-portfolio-scroll">
+        	<header>
+        		<h1>{{ cpm.title }} - {{ cpm.portfolio.name }}</h1>
+        	</header>
+
+            <div class="mt20 h30">
+                <div class="fl">
+                    <input type="text" placeholder="Name your portfolio" ng-model="cpm.portfolio.name" class="portfolio-input-name rounded4px">
+                </div>
+
+                <div class="fl ml10">
+                    <div class="fl mt5">
+                        <label for="email_notification">Get Email Notifications</label>
+                        <input type="checkbox" ng-model="cpm.portfolio.email_notification" name="email_notification" />
+                    </div>
+                    <button ng-show="cpm.sample" ng-click="cpm.portfolioSample(cpm.portfolio.id)" class="fr sample-btn">Get Sample Report</button>
+
+                    <div ng-show="cpm.portfolio.email_notification" class="fl ml10 mt5">
+                        <select ng-model="cpm.portfolio.frequency" ng-change="cpm.changeFrequency()">
+                            <option ng-repeat="frequency in cpm.frequencies" value="{{frequency}}">{{frequency}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt20 create-portfolio-ticker-search" ng-show="cpm.portfolio.name != ''">
+                <h3>Add Ticker to {{ cpm.portfolio.name }}</h3>
+                <search on-ticker-result="cpm.setTicker(ticker)"></search>
+            </div>
+
+            <portfolio-ticker ng-repeat="ticker in cpm.portfolio.tickers"
+                              ticker="ticker"
+                              index="$index"
+                              on-remove="cpm.removeTicker(ticker)"
+                              on-update="cpm.updateTicker(index, ticker)"></portfolio-ticker>
+        </div>
+
+        <button ng-show="cpm.create" class="btn-modal btn-close-tight ml10 w145px" ng-click="cpm.createPortfolio()">Create Portfolio</button>
+        <button ng-hide="cpm.create" class="btn-modal btn-close-tight ml10 w145px" ng-click="cpm.save()">Save Portfolio</button>
+        <button class="btn-modal btn-close-tight btn-red" ng-click="cpm.cancel()">Cancel</button>
+    </div>
+
+    <div class="overlay" ng-click="cpm.cancel()"></div>
+</div>

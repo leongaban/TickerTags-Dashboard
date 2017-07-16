@@ -1,0 +1,69 @@
+<section class="user-settings-view">
+    <div class="user-settings-content">
+
+        <header></header>
+
+        <div class="icon-cancel big-x" ng-click="std.backToDash()"></div>
+
+        <div class="fl w100">
+            <section class="account-details">
+                <form ng-submit="std.updateSettings()" novalidate>
+                    <section>
+                        <h2>Change Password</h2>
+                        <p class="lh24 mbot20">Make sure you password is unique from any other and doesn't use anything obvious to ensure your account is secure as possible.</p>
+
+                        <div class="password-fields">
+                            <ul>
+                                <li>
+                                    <input type="password" id="current-password" placeholder="Current password" name="current-password" ng-model="std.password.current">
+                                </li>
+                                <li>
+                                    <input type="password" id="new-password" placeholder="New password" name="new-password" ng-model="std.password.new1">
+                                </li>
+                                <li>
+                                    <input type="password" id="new-password2" placeholder="Re-enter new password" name="new-password2" ng-model="std.password.new2">
+                                </li>
+                                <li class="fl w100">
+                                    <p class="reset-pass" ng-click="std.resetPassword()">Reset password</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="save-password-btn-container">
+                            <ul>
+                                <li>
+                                    <button type="submit" class="btn-settings-save btn-green-filled">Save New Password</button>
+                                </li>
+                                <li ng-show="std.hasError">
+                                    <p class="default-errors"><span class="red">{{ std.errorMsg }}</span></p>
+                                    <div ng-click="std.closeErrorMsg()" class="icon-cancel"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </form>
+            </section>
+        </div>
+
+        <subscription-options></subscription-options>
+        
+        <!-- <div class="fl mt20 w100">
+            <section class="account-details brt">
+                <section class="padt20">
+                    <h2>Subscription Settings</h2>
+                    <div class="cancel-box">
+                        <button type="submit"
+                                class="btn-settings-save btn-green-filled"
+                                ng-click="std.openCancelSubscription()">Cancel Subscription</button>
+                    </div>
+                    <div class="update-box">
+                        <button type="submit"
+                                class="btn-settings-save btn-green-filled"
+                                ng-click="std.openUpdateCard()">Update Card</button>
+                    </div>
+                </section>
+            </section>
+        </div> -->
+
+    </div>
+</section>

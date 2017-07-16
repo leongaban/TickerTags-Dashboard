@@ -1,0 +1,48 @@
+/* Add Ticker Modal
+============================================================
+========================================================= */
+
+// Main classes
+// ---------------------------------------------------------
+.add-ticker-modal {
+    position: fixed;
+    z-index: 1050;
+    top: 255px;
+    left: 10px;
+    padding-bottom: 20px;
+    width: 265px;
+    padding: 5px 15px 0px;
+    font-family: 'robotolight';
+    font-size: em(14);
+    color: #fff;
+    background: $gray_47;
+    border: 1px solid $gray3;
+    @include box-shadow(0 2px 10px rgba(50, 50, 50, 0.1));
+    @include transition(opacity, .3s, ease-in-out);
+    @include rounded(3px);
+
+    &:before { position: relative; z-index: 99; top: -13px; left: 4px; @include triangle(up, 8px, $gray_47); }
+    &:after  { position: absolute; z-index: 98; top: -10px; left: 18px; @include triangle(up, 9px, $gray3); }
+
+    a {
+        color: $green;
+        &:hover { text-decoration: none; }
+    }
+
+    p { margin-bottom: 15px; line-height: em(22); }
+
+    input {
+        margin-bottom: 20px;
+        padding: 5px 0 5px 10px;
+        width: 250px;
+        height: 20px;
+        color: $gray4;
+        border: 1px solid $gray2;
+        @include rounded(4px);
+    }
+}
+
+.search-tickers h1 { color: darken($gray2, 5%); }
+
+// For addTicker popover if a Searched ticker is showing
+// .bump-down { top: 350px; }

@@ -1,0 +1,202 @@
+/*  Responsive media queries
+============================================================
+========================================================= */
+
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+    .login-container { position: absolute; padding: 20px; width: 100%; height: 100%; min-height: 100%; background: $gray4; }
+    .login-form-block h1,
+    .login-form-block header,
+    .login-btn { width: 320px !important; }
+    .terms-of-use-line { font-size: em(11); }
+    input#username, input#password { width: 318px !important; }
+}
+
+// 5000px //////////////////////////////////////////////////
+@media all and (max-width: 5000px) {
+    .feed-panel-container { border-top: none; }
+}
+
+// 1599px //////////////////////////////////////////////////
+@media all and (max-width: 1599px) {
+    .greaterThan1600 { display: none !important; }
+    .lessThan1600 { display: block !important; }
+}
+
+// 1400px //////////////////////////////////////////////////
+@media all and (max-width: 1400px) {
+    // .chosen-ticker h1 { display: none; }
+    // .partial-chart-header { display: none; }
+
+    .analytics-table {
+        thead td {
+            font-size: em(12);
+            line-height: 14px;
+        }
+
+        tbody td { font-size: em(13); }
+
+        thead td,
+        tbody td { padding: 10px 5px; }
+    }
+}
+
+// 1350px //////////////////////////////////////////////////
+@media all and (max-width: 1350px) {
+    .time-range-label { display: none; }
+}
+
+// 1300px //////////////////////////////////////////////////
+@media all and (max-width: 1300px) {
+    .show-under-1300 { display: block; }
+    .hide-under-1300 { display: none; }
+
+    .ch-smaller-txt {
+        .current-price,
+        .percentage-change {
+            margin-top: 5px;
+            font-size: em(11);
+        }
+    }
+
+    .feed-open {
+        .export-data-popover { right: 50px; }
+    }
+
+    .export-data-popover { right: 300px; }
+
+    // .tickertags-logo { margin: 2px 0 0 20px; }
+
+    // .ticker.help {
+    //     padding: 2px 5px !important;
+    //     width: 62px;
+    // }
+
+    // .spy-ticker { width: 65px; }
+
+    // .add-ticker { width: 57px; }
+
+    // .viewing-tags {
+    //     margin-left: 280px;
+    //     .ticker { margin-top: 3px; padding: 6px; font-size: 11px; }
+    //     .tag { margin-top: 4px; padding: 5px 15px 7px 5px !important; font-size: 11px; }
+    // }
+
+    // .tickers-tickers_panel {
+    //     width: 100px;
+    //     .ticker { padding: 5px; font-size: em(12); }
+    // }
+
+    // .tickers-column {
+    //     li { margin: 5px 0; }
+    // }
+
+    // .associated-tags {
+    //     .ticker { padding: 4px 6px; font-size: em(13); }
+    // }
+
+    // .tags-tag_hover-container { left: 180px; }
+
+    // .tag-actions {
+    //     margin-top: 0;
+    // }
+
+    // .ticker-tag_hover-container { top: 20px; width: 88px; }
+
+    // .search-tickers {
+    //     .ticker-tag_hover-container { width: 200px; }
+    // }
+
+    // .ticker-info-padding {
+    //     // h1 { font-size: em(13); }
+    //     // h2 { font-size: em(10); }
+    // }
+
+    // .tweet-count,
+    // .tag-category { font-size: em(11); }
+
+    // .tag-action-padding { padding: 10px; }
+
+    // .add-my-watchlist { font-size: em(11); }
+
+    // .tags-fade { top: 218px; }
+
+    // .tweet-percentage { font-size: em(13); }
+
+    // #tags-tickers_panel {
+    //     margin-left: 100px; max-width: 180px; min-width: 180px;
+    //     li { margin-right: 10px; }
+    // }
+
+    // .tag-column { max-width: 160px; min-width: 160px; }
+
+    // #tags-tickers_panel-list {
+    //     .tag { padding: 4px 7px; max-width: 80px; font-size: em(12); }
+    // }
+
+    // .tag-icon-group {
+    //     .quick-tags_filter-ico { top: 20px; }
+    // }
+
+    // .tag-actions-bumper { height: 0; }
+
+    // .search-input {
+    //     input { width: 224px; }
+    // }
+
+    // .tags-tags_filter-popover {  top: 153px; left: 39px; }
+    // .activity-tickers_panel { left: 281px; }
+    
+    // .chosen-ticker span { line-height: em(26); }
+    // .current-price span,
+    // .percentage-change span { font-size: em(12); }
+    // .ticker-price-info li { margin: 0 5px; }
+    // .partial-tags { display: none; }
+    // .insight h1 { font-size: em(14); }
+
+    // .add-ticker-modal { top: 220px; }
+}
+
+// 1280px //////////////////////////////////////////////////
+@media all and (max-width: 1280px) {
+    .timeheader-feed-open {
+        .search-input input { width: auto; }
+    }
+}
+
+// 1200 //////////////////////////////////////////////////
+@media all and (max-width: 1200) {
+    // .current-price {
+    //     font-size: em(11) !important;
+    //     margin-top: 5px;
+    // }
+
+    // .percentage-change {
+    //     span {
+    //         position: relative;
+    //         top: 4px;
+    //         font-size: em(11) !important;
+    //     }
+    // }
+}
+
+// 1100px //////////////////////////////////////////////////
+@media all and (max-width: 1100px) {
+    .twitter-type-info { font-size: em(11); }
+}
+
+// 990px //////////////////////////////////////////////////
+@media all and (max-width: 990px) {
+    .twitter-type-info { display: none; }
+}
+
+// 960px ///////////////////////////////////////////////////
+@media all and (max-width: 960px) {
+    .chosen-ticker-details { min-width: 640px; }
+    .tickertag-stats    { float: right; position: relative; right: 10px; }
+    #social-media-panel { margin-right: -10px; min-width: 550px; }
+}
+
+// Heights /////////////////////////////////////////////////
+@media all and (max-height: 960px) {
+    .scroll-more-message { display: none; }
+}

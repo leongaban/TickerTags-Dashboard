@@ -1,0 +1,23 @@
+<div class="fl mt20 w100">
+    <section class="account-details brt">
+        <section class="padt20">
+            <h2>Subscription Settings</h2>
+            
+            <div class="cancel-box">
+                <button ng-if="!soc.renew" type="submit"
+                        class="btn-settings-save btn-green-filled"
+                        ng-click="soc.openCancelSubscription()">Cancel Subscription</button>
+
+                <button ng-hide="soc.hideRenew"
+                        ng-if="soc.renew" type="submit"
+                        class="btn-settings-save btn-green-filled"
+                        ng-click="soc.renewSubscription()">Renew Subscription</button>
+            </div>
+            <div class="update-box">
+                <button type="submit"
+                        class="btn-settings-save btn-green-filled"
+                        ng-click="soc.openUpdateCard()">Update Card</button>
+            </div>
+        </section>
+    </section>
+</div>

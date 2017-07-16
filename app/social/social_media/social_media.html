@@ -1,0 +1,76 @@
+<section id="social-media-panel"
+		 ng-class="{
+		 	'social-wide' : sm.leftZero,
+		 	'mr230' : sm.right230,
+		 	'hide' : sm.hideSocial,
+		 	'top217' : sm.expandTall
+		 }">
+
+	<header class="content-stream-bar">
+		<div ng-if="sm.hasTags" class="currently-charting">
+			<div class="social-btn-group">
+
+				<button ng-click="sm.toggleFreqMentions('incidences')"
+						ng-class="{ 'active' : sm.graphFrequency == 'incidences' }"
+						class="social-data-btn" title="Frequency">
+		    		<div class="circle6"></div>Frequency
+				</button>
+
+				<button ng-click="sm.toggleFreqMentions('mentions')"
+						ng-class="{ 'active' : sm.graphFrequency == 'mentions' }"
+						class="social-data-btn" title="Mentions">
+		    		<div class="circle6"></div>Mentions
+				</button>
+			</div>
+
+			<span class="twitter-type-info"> {{ sm.dataDescription }} </span>
+		</div>
+
+		<div class="social-stream-controls">
+			<div class="icon-help-circled" ng-click="sm.displaySocialHelp()"></div>
+			<div ng-if="!sm.expandTall" class="move-social">
+				<div class="arrow-up" title="Toggle panel size" ng-click="sm.expandSocialPanel()"></div>
+			</div>
+			<div ng-if="sm.expandTall" class="move-social">
+				<div class="arrow-down" title="Toggle panel size" ng-click="sm.expandSocialPanel()"></div>
+			</div>
+		</div>
+	</header>
+
+	<section id="social-tabs-container">
+		<header class="social-tabs-header">
+			<nav>
+				<ul>
+                    <social-media-tab ng-repeat="(tab, conf) in sm.tabs"
+                                      type=conf
+                                      active=tab.active
+                                      on-select="sm.socialTabClick(type)"
+                                      on-filter="sm.toggleDomainFilter(type)"
+                                      on-tweet-toggle="sm.callStartLoad(start, end, links, retweets)"
+                                      on-domain="sm.setDomain(domain)"
+                                      on-hide="sm.hideDomainFilters()"></social-media-tab>
+                </ul>
+			</nav>
+		</header>
+
+		<section class="social-tabs pad10">
+			<social-media-loading ng-show="sm.loading"></social-media-loading>
+
+			<div ng-show="sm.zeroData" class="select-tag-message">
+				Select a Tag to start social listening.
+				<section>
+					<p class="zero-stream-msg">Historic data not available for this current range or social stream.</p>
+					<p class="zero-stream-msg" ng-show="sm.tabs.tweets.active">Try toggling on links and retweets if no tweets appear for Tag graph.</p>
+					<div class="no-tweet-tags">
+						<div ng-repeat="tweet in sm.noTweetTags" class="tag">{{ tweet.term }}</div>
+					</div>
+				</section>
+			</div>
+
+			<div id="social-tab-scroll" ng-hide="sm.loading">
+				<social-tab-stream api="sm.socialTabApi"></social-tab-stream>
+			</div>
+		</section>
+	</section>
+
+</section>

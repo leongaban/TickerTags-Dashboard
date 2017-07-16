@@ -1,0 +1,9 @@
+<div>
+    <div class="modal-default">
+        <div class="icon-credit-card"></div>
+        <hr>
+        <div><p>Update your payment details below:</p></div>
+        <stripe-card-payment on-payment="upay.cancel()"></stripe-card-payment>
+    </div>
+    <div class="overlay" ng-click="upay.cancel()"></div>
+</div>

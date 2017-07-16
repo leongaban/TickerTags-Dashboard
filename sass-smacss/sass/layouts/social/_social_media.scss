@@ -1,0 +1,386 @@
+/* Social media panes
+============================================================
+========================================================= */
+
+// Main Classes
+// ---------------------------------------------------------
+#social-media-panel {
+    position: fixed;
+    top: 450px;
+    // width: calc(100% - 230px);
+    height: calc(100% - 340px);
+    background: $gray_47;
+    z-index: 100;
+}
+
+#social-media-panel.top217 { top: 217px !important; }
+
+.social-wide { left: 0 !important; }
+
+.content-stream-bar {
+    padding: 10px;
+    // width: calc(100% - 230px);
+    height: 13px;
+    background: $gray_54; border-top: 1px solid $gray3; border-bottom: 1px solid $gray3;
+    h1 { margin-left: 10px; font-family: 'roboto_condensedlight'; font-size: em(12); color: $gray_ticker; }
+    .blue { color: $tag_yellow !important; }
+}
+
+.social-btn-group { margin-top: -5px; }
+
+.currently-charting,
+.social-btn-group,
+.social-stream-controls { float: left; }
+
+.social-stream-controls {
+    position: absolute;
+    right: 20px;
+    .icon-help-circled,
+    .ico-fullscreen { float: left; }
+    .ico-fullscreen { margin: 4px 0 0 10px; }
+
+    .icon-help-circled {
+        color: $gray2;
+        &:hover { color: $green; }
+    }
+}
+
+.move-social {
+    float: left;
+    margin: 4px 0 0 10px;
+    width: 14px;
+    height: 14px;
+}
+
+.arrow-up,
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    cursor: pointer;
+}
+
+.arrow-up {
+    border-bottom: 10px solid $gray2;
+    &:hover { border-bottom: 10px solid $green; }
+}
+
+.arrow-down {
+    border-top: 10px solid $gray2;
+    &:hover { border-top: 10px solid $green; }
+}
+
+.social-data-btn {
+    padding: 4px 8px;
+    font-size: em(12);
+    color: $gray2;
+    background: lighten($gray4, 5%);
+    border: 1px solid $gray3;
+    @include rounded(4px);
+    @include transition(all, .5s, ease-in-out);
+
+    &:active {
+        color: $gray0;
+        border: 1px solid darken($green, 10%);
+        background: #000 !important;
+    }
+
+    &:hover {
+        color: $gray0;
+        background: lighten($gray4, 1%);
+        border: 1px solid darken($green, 10%);
+    }
+
+    .circle6 {
+        float: left;
+        margin: 3px 7px 0 0;
+        width: 6px;
+        height: 6px;
+        background: $gray3;
+        border-radius: 50%;
+    }
+}
+
+.social-data-btn.active {
+    color: $gray0;
+    background: $gray4;
+    border: 1px solid $green;
+    .circle6 { background: $green; }
+}
+
+.showing-no-tweet-tags {
+    float: left;
+    margin: 40px 0 0 40px !important;
+    height: auto !important;
+    text-align: left !important;
+    line-height: 0 !important;
+}
+
+.sentiment-area {
+    float: left;
+    width: 100%;
+
+    .btn {
+        color: $gray0;
+        background: $gray4;
+        border: 1px solid $gray3;
+        @include rounded(4px);
+    }
+
+    .selected {
+        background: $green;
+    }
+}
+
+.select-tag-message {
+    float: left;
+    // margin: 0 0 0 40px !important;
+    height: auto !important;
+    text-align: left !important;
+    line-height: 0 !important;
+    
+    // margin: 40px auto;
+    padding: 40px;
+    width: 80%;
+    // height: 40px;
+    // text-align: center;
+    font-size: 1em;
+    // line-height: 40px;
+    color: $gray2;
+    border: 1px solid $gray3;
+    @include rounded(4px);
+
+    .zero-stream-msg { float: left; margin-top: 40px; font-size: em(12); }
+
+    .tag { float: left; font-size: em(11); }
+}
+
+.no-tweet-tags { float: left; margin-top: 30px; width: 100%; }
+
+.social-content {
+    float: left;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid $gray3;
+    z-index: 100;
+    @include transition(opacity, .5s, ease-in-out);
+
+    a {
+        color: $gray2; text-decoration: none;
+        &:hover { color: #fff; }
+    }
+
+    header { padding-bottom: 10px; font-family: 'robotobold'; font-size: em(12); line-height: 18px; }
+    time   { font-family: 'robotolight'; font-size: em(12); color: $gray2; }
+
+    p {
+        overflow: hidden;
+        padding: 0 0 10px 0;
+        font-family: 'robotolight';
+        font-size: em(14);
+        line-height: em(20);
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+    }
+
+    strong { color: $tag_yellow; }
+}
+
+// Safari modification
+.btn-incidents-mentions:not(:root:root) { top: -7px; }
+
+.btn-incidents-mentions {
+    float: left;
+    position: relative;
+    top: -7px;
+    padding: 5px 7px;
+    width: 154px;
+    font-size: em(14);
+    color: $gray2;
+    border: 1px solid $gray3;
+    background: $gray_47;
+    @include rounded(4px);
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.1);
+    &:hover { border: 1px solid lighten($tag_yellow, 10%); background: lighten($gray_47, 5%); }
+    .active { font-family: 'robotobold'; color: $tag_yellow; }
+}
+
+.twitter-type-info {
+    position: relative;
+    top: -3px;
+    margin-left: 10px;
+    color: #ccc;
+    font-size: 13px;
+}
+
+.loading-dots-container {
+    position: absolute;
+    top: 100px;
+    margin: 20px 0;
+    width: 100%;
+    height: 100px;
+}
+
+.loader-dots {
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    background: url(../imgs/loader-dots.gif) no-repeat 5px 3px;
+}
+
+.stream-headers {
+    position: fixed;
+    z-index: 101;
+    @include transition(all, .5s, ease-in-out);
+}
+
+.social-stream-header { float: left; width: 100%; padding: 20px 10px 20px 20px; }
+
+@-moz-document url-prefix() {
+    .social-stream-header { margin-top: -40px; }
+}
+
+.stream-title {
+    float: left; color: $gray2; font-family: 'robotobold'; font-size: em(12); text-transform: uppercase; cursor: pointer;
+    .blue { color: $tag_yellow !important; }
+}
+
+.social-graph-icon-container {
+    float: left;
+    margin-top: -3px;
+    button { font-size: 13px; }
+}
+
+.social-col-filter { position: relative; float: right; top: -7px; }
+
+.filter-social-media {
+    position: absolute;
+    z-index: 101;
+    top: -173px;
+    right: 70px;
+    padding: 0 10px;
+    width: 170px;
+    color: #fff;
+    background: $gray_47;
+    border: 1px solid $gray3;
+    @include rounded(2px);
+
+
+    &:before {
+        position: relative;
+        top: 180px;
+        left: 180px;
+        z-index: 2;
+        border-left: 8px solid $gray_47;
+        @include triangle(right, 8px, $gray_47);
+    }
+
+    &:after {
+        position: absolute;
+        top: 181px;
+        left: 191px;
+        z-index: 1;
+        border-left: 8px solid $gray3;
+        @include triangle(right, 8px, $gray2);
+    }
+
+    header {
+        margin-bottom: 10px;
+        font-family: 'roboto_condensedlight';
+        font-size: em(12);
+        color: $gray2;
+    }
+
+    input[type="checkbox"] { margin-right: 3px; }
+
+    li { margin-bottom: 10px; font-size: em(14); }
+}
+
+.default-social-message {
+    position: absolute;
+    margin: 15% auto;
+    padding: 25px;
+    font-size: em(24);
+    line-height: 32px;
+    text-align: center;
+    color: #fff;
+    background: $gray_47;
+    @include rounded(6px);
+}
+
+.reviews-column {
+    .domain { color: #ccc; }
+}
+
+.social-col {
+    float: left;
+    position: relative;
+    top: 40px;
+    width: 33%;
+    min-width: 200px;
+    height: 100%;
+    border-right: 1px solid $gray3;
+}
+
+.social-col.financial-column { border-right: none; }
+
+.domain {
+    font-size: em(11);
+    line-height: 18px;
+    a { color: #fff; }
+}
+
+// Special heights
+// ---------------------------------------------------------
+.h-short { height: 515px !important; }
+.h-med   { height: 748px !important; }
+.h-tall  { height: 1071px !important; }
+
+// Popovers
+// ---------------------------------------------------------
+.fullscreen-feature {
+    top: -45px;
+    right: 0;
+
+    &:before { display: none; }
+    &:after {
+        position: absolute;
+        top: 40px;
+        right: 20px;
+        @include triangle(down, 8px, $gray2);
+    }
+}
+
+.icon-block {
+    float: left;
+    margin-left: 10px;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    color: $gray2;
+}
+
+.spam { margin-left: -3px; font-size: em(11); }
+
+.icon-block.selected { color: $red; }
+
+// Fontello
+// ---------------------------------------------------------
+.greaterThan2000 { display: block !important; }
+.greaterThan1600 { display: block !important; }
+
+.social-busy {
+    z-index: 100;
+    margin-left: -5px;
+    width: 100%;
+    height: 100%;
+    padding: 5%;
+    font-size: em(14);
+    font-family: 'roboto_condensedlight';
+    background: $gray_47;
+}

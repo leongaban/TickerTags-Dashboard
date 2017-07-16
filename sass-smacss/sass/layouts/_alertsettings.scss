@@ -1,0 +1,35 @@
+// Alert Settings
+////////////////////////////////////////////////////////////
+.alert-setting-container {
+    margin-top: -20px;
+	.settings-buttons { margin-top: 60px; }
+    .settings-btns-container { width: 800px; }
+}
+
+.alert-options {
+    padding-bottom: 20px;
+    border-bottom: 1px solid $gray3;
+    @include clearfix;
+    h1    { margin-bottom: 10px; }
+    p     { font-size: em(12); }
+    input { float: left; margin-right: 5px; }
+    label { float: left; margin-right: 20px; font-size: em(14); color: $gray2; }
+    tr    { display: table-row; height: 26px; }
+    td    { height: 15px; }
+    li    { float: left; }
+    .icon-lightbulb  { float: left; }
+    .event-gray 	{ float: left; margin: 5px 2px 0 5px; }
+    .icon-up-open   { margin-top: 9px; margin-left: 3px; font-size: em(11) }
+    .cash-gray-up   { margin-top: 9px; margin-left: 5px; }
+    .trend-up       { margin-top: 7px; margin-left: 3px; }
+	.icon-toggle-on,
+	.icon-toggle-off { margin: 0 10px 0 0; }
+}
+
+.alert-filters {
+    input { margin: 5px 5px 0 0; }
+}
+
+.alert-notifications {
+    input { margin: 0 6px; }
+}

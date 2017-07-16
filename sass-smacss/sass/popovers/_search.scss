@@ -1,0 +1,145 @@
+/* searchPopover mainSearch
+============================================================
+========================================================= */
+
+.search-popover {
+    position: fixed;
+    z-index: 1050;
+    top: 95px;
+    left: 10px;
+    padding: 0;
+    width: 660px;
+    height: auto;
+    font-size: em(11);
+    background: $gray_47;
+    border: 1px solid $gray3;
+
+    @include box-shadow(0 2px 10px rgba(50, 50, 50, 0.1));
+    @include transition(opacity, .3s, ease-in-out);
+    @include rounded(3px);
+
+    &:before {
+        position: absolute;
+        z-index: 99;
+        top: -10px;
+        left: 26px;
+        @include triangle(up, 10px, $gray_47);
+    }
+
+    &:after {
+        position: relative;
+        z-index: 98;
+        top: -11px;
+        left: 25px;
+        @include triangle(up, 11px, $gray3);
+    }
+
+    .tags-hover-container { position: absolute; top: 0; left: 40px; }
+}
+
+.search-tickers-popover {
+    top: 400px;
+    width: 430px;
+    height: 300px;
+
+    .icon-cancel { float: right; top: -100px; left: -10px; }
+
+    .search-tickers { padding-left: 0; }
+}
+
+.to-portfolio,
+.to-favorites {
+    color: $green;
+    cursor: pointer;
+    &:hover { color: #fff; }
+}
+
+.to-portfolio {
+    float: right;
+    margin-right: 10px;
+    height: 10px;
+}
+
+.search-tickers,
+.search-tags {
+    float: left;
+    padding: 20px 0 20px 20px;
+    min-height: 156px;
+
+    h1 {
+        margin-bottom: 10px;
+        font-family: roboto_condensedbold;
+        font-size: em(14);
+        color: #fff !important;
+    }
+}
+
+.search-tickers { width: 279px; }
+
+.search-tags {
+    width: 340px;
+    border-left: 1px solid $gray3;
+
+    header { float: left; width: 100%; }
+
+    h1 { float: left; }
+
+    h3 {
+        float: left;
+        margin-left: 10px;
+        font-size: em(12);
+        color: $gray2;
+    }
+
+    .tags-hover-container { width: 240px; }
+
+    .icon-cancel { float: right; top: -25px; right: 10px; }
+}
+
+.ticker-info {
+    margin: 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $gray3;
+    @include clearfix();
+    &:last-child { border: none; }
+}
+
+.ticker-symbol,
+.ticker-details { float: left; }
+
+.ticker-symbol {
+    width: 90px;
+    font-family: robotobold;
+    font-size: em(22);
+    color: #fff;
+    cursor: pointer;
+    &:hover { color: $green; }
+}
+
+.ticker-details {
+    li:first-child {
+        margin-bottom: 5px;
+        font-family: robotolight;
+        font-size: em(14);
+        color: $gray2;
+    }
+
+    li:last-child {
+        font-family: robotoregular;
+        font-size: em(12);
+        color: $gray2;
+    }
+}
+
+.fuzzy-tickers,
+.fuzzy-tags {
+    max-height: 340px;
+    min-height: 300px;
+    overflow-y: auto;
+}
+
+.fuzzy-tags {
+    float: left;
+    width: 100%;
+    .tag-quick-info { margin: 0 10px; min-width: 40px; }
+}

@@ -1,0 +1,51 @@
+<div class="login-container">
+    <section class="login-form-block">
+        <header>
+            <div class="tickertags-logo-big" ui-sref="login"></div>
+            <h1 title="Subscription is $150 a month, cancel anytime.">Subscription is <em>$150</em> a month.<span class="small">(cancel anytime)</span></h1>
+            <h2 title="Create a new account then proceed to payment.">Create a new account then proceed to payment.</h2>
+        </header>
+        <div class="login-form">
+            <form ng-submit="cust.submitPersonalData()">
+                <div class="icon-envelope-open"></div>
+                <input type="text" id="email" placeholder="Email" name="email" ng-model="cust.creds.email">
+
+                <div class="fl w100">
+                    <div class="customer-name mr10">
+                        <input type="text" id="firstname" placeholder="First name" name="firstname" ng-model="cust.creds.firstname">
+                    </div>
+
+                    <div class="customer-name">
+                        <input type="text" id="lastname" class="mbot10" placeholder="Last name" name="lastname" ng-model="cust.creds.lastname">
+                    </div>
+                </div>
+
+                <hr>
+                <label for="password">Minimum 6 characters, contains at least 1 number and letter and no spaces.</label>
+                <input type="password" id="password" class="mt10" placeholder="Password" name="password" ng-model="cust.creds.password">
+                <input type="password" id="password2" placeholder="Confirm Password" name="password2" ng-model="cust.creds.password2">
+                
+                <div class="fl w100 mtneg20">
+                    <input type="checkbox" id="individual-investor" name="individual-investor"
+                           ng-model="cust.indiviual"
+                           ng-checked="cust.indiviual"
+                           ng-change="cust.toggleInvestorStatus()" value="cust.indiviual">
+                    <label for="individual-investor" class="fl mt20">I am an individual investor. (required)</label>
+                </div>
+
+                <div ng-if="cust.formDisabled" class="signup-btn btn-gray-dark fl" title="Create Account" disabled>Create Account &raquo;</div>
+                
+                <button ng-if="!cust.formDisabled" type="submit" class="signup-btn btn-green-filled" title="Create Account">Create Account &raquo;</button>
+
+                <button class="btn-back mt20" ui-sref="login" title="Back to login">&laquo; Back to login</button>
+            </form>
+
+            <p class="terms-of-use">
+                By creating an account you agree to our
+                <a href="assets/static/tickertags-terms-of-use.pdf" target="_blank">Terms of Use</a>
+                and
+                <a href="assets/static/privacypolicy.pdf" target="_blank">Privacy Policy</a>
+            </p>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,29 @@
+<div>
+	<section ng-class="{ 'right250' : $ctrl.feedOpen }" class="saved-views-modal">
+		<section class="fl w100">
+		    <header><h1>Save your current view</h1></header>
+		    <input type="text" ng-model="$ctrl.viewName" placeholder="View name" required>
+		    <button class="btn-green-filled mt0" ng-click="$ctrl.save($ctrl.viewName)">Save</button>
+		</section>
+
+		<section class="fl w100">
+		    <header class="mt20"><h1>Load a saved view</h1></header>
+
+		    <div class="select-style">
+		        <select name="select" ng-show="$ctrl.available" ng-init="$ctrl.current.description"
+		                ng-model="$ctrl.current" ng-change="$ctrl.chooseView($ctrl.current)"
+		                ng-options="value as value.description for value in $ctrl.views">
+		            <option></option>
+		        </select>
+
+		        <select ng-hide="$ctrl.available" name="select">
+		            <option selected="selected" value="No saved views">No saved views</option>
+		        </select>
+		    </div>
+
+		    <button class="btn-green-filled" ng-click="$ctrl.load($ctrl.current)"> Load View</button>
+		    <button class="btn-green" ng-click="$ctrl.delete($ctrl.views, $ctrl.current)"> Delete View</button>
+		</section>
+	</section>
+	<div class="overlay" ng-click="$ctrl.close()"></div>
+</div>

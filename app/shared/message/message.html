@@ -1,0 +1,11 @@
+<div>
+    <div class="modal-thumbsup-alert modal-default">
+        <div ng-show="m.success" class="icon-thumbs-up-alt"></div>
+        <div ng-hide="m.success" class="icon-attention-1"></div>
+        <hr>
+        <div ng-hide="m.linked"><p>{{ m.msg }}</p></div>
+        <div ng-show="m.linked"><p><a href="{{ m.msg }}" target="_blank">{{ m.msg }}</a></p></div>
+        <button class="btn-modal" ng-click="m.cancel()">Dismiss</button>
+    </div>
+    <div class="overlay" ng-click="m.cancel()"></div>
+</div>

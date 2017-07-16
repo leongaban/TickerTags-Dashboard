@@ -1,0 +1,151 @@
+/* Tags Panel
+============================================================
+========================================================= */
+
+#tags-panel {
+    margin-left: 131px;
+    // min-width: 250px;
+    width: 250px;
+    z-index: 3;
+    @include box-shadow(5px 0 10px -5px rgba(50, 50, 50, 1));
+    li { margin-right: 15px; }
+}
+
+// Main Classes
+// ---------------------------------------------------------
+#tags-panel-list {
+    overflow-y: auto;
+    height: 100%;
+    .tag { max-width: 130px; }
+    li.selected {
+        .tag { background: none; }
+    }
+}
+
+.tag-yellow {
+    .tag { color: darken($tag_yellow, 20%) !important; border: 1px solid $tag_yellow !important; }
+}
+
+.tag-cyan {
+    .tag { color: $tag_cyan !important; color: darken($tag_cyan, 10%) !important; border: 1px solid $tag_cyan !important; }
+}
+
+.tag-blue {
+    .tag { color: $tag_blue !important; border: 1px solid $tag_blue !important; }
+}
+
+.tag-sort-carousel {
+    z-index: 4;
+    position: absolute;
+    width: 140px;
+    ul { width: 235px; }
+    li { float: left; font-family: 'roboto_condensedlight'; text-transform: uppercase; cursor: pointer; }
+    li.active { font-family: 'roboto_condensedbold'; color: $green !important; }
+}
+
+#carousel-list { position: absolute; left: 0; width: 1px; @include transition(left, .5s, ease-out); }
+
+.quick-find {
+    margin-bottom: -5px;
+    padding: 20px 20px 5px 20px;
+    font-size: em(11);
+    text-transform: uppercase;
+    font-family: 'roboto_condensedlight';
+    background: $gray_47;
+    @include clearfix();
+
+    li {
+        float: left; color: $gray2; cursor: pointer;
+        &:not(.active) {
+            &:hover { color: $green; }
+        }
+    }
+
+    .active { color: $gray4; font-weight: 500; }
+}
+
+.tag-quick-info {
+    float: right;
+    font-size: em(10);
+
+    .quantity,
+    .trending { width: 100%; text-align: right; }
+    .trending { margin-bottom: 3px; font-family: roboto_condensedbold; color: #fff !important; }
+    .quantity { font-family: robotoregular !important; color: $gray_ticker !important; }
+
+    .icon-up-open,
+    .icon-down-open { float: left; margin-top: 3px; margin-right: 2px; }
+}
+
+.tag-filter {
+    margin: 15px 0;
+    font-size: em(12);
+    color: $gray2;
+
+    p {
+        cursor: pointer;
+        &:hover { color: $green; }
+    }
+
+    .icon-help-circled {
+        font-size: em(20);
+        &:hover { color: $green; }
+    }
+}
+
+.add-tag-section {
+    position: relative;
+    top: 87px;
+    left: 15px;
+    height: 36px;
+    font-family: 'robotolight';
+    color: $gray0;
+
+    .btn-search {
+        float: right;
+        position: absolute;
+        right: 0;
+        border: 1px solid $gray3;
+        @include transition(all, .5s, ease-out);
+
+        &:hover {
+            color: $green;
+            border: 1px solid $green !important;
+        }
+    }
+}
+
+.tag-column {
+    z-index: 1;
+    float: left;
+    position: fixed;
+    overflow-y: auto;
+    margin-top: 90px;
+    max-width: 230px;
+    min-width: 230px;
+    height: calc(100% - 165px);
+    li { margin: 5px 0; }
+}
+
+.scroll-more-message {
+    position: absolute;
+    bottom: 80px;
+    font-size: em(14);
+    color: lighten($gray3, 10%);
+}
+
+// SVG
+// ---------------------------------------------------------
+.icon-spin5 { opacity: 1; color: #fff; }
+// .quick-search-ico,
+.quick-filter-ico { float: left; top: -5px; width: 20px; height: 20px; @include rounded(4px); }
+// .quick-search-ico { left: -15px; }
+
+.tag-icon-group {
+    z-index: 3;
+    float: right;
+    position: relative;
+    top: -10px;
+    left: 80px;
+    .quick-filter-ico { top: 10px; left: 0; }
+}

@@ -1,0 +1,22 @@
+
+.icon-picture:before { content: '\e800'; } /* '' */
+.icon-help-circled:before { content: '\e801'; } /* '' */
+.icon-block:before { content: '\e802'; } /* '' */
+.icon-credit-card:before { content: '\e803'; } /* '' */
+.icon-cancel:before { content: '\e805'; } /* '' */
+.icon-left-open:before { content: '\e806'; } /* '' */
+.icon-right-open:before { content: '\e807'; } /* '' */
+.icon-search:before { content: '\e808'; } /* '' */
+.icon-down-open:before { content: '\e809'; } /* '' */
+.icon-up-open:before { content: '\e80a'; } /* '' */
+.icon-resize-full-1:before { content: '\e80b'; } /* '' */
+.icon-attention-1:before { content: '\e80c'; } /* '' */
+.icon-resize-small-1:before { content: '\e80d'; } /* '' */
+.icon-spin5:before { content: '\e838'; } /* '' */
+.icon-lightbulb:before { content: '\f0eb'; } /* '' */
+.icon-bell-alt:before { content: '\f0f3'; } /* '' */
+.icon-thumbs-up-alt:before { content: '\f164'; } /* '' */
+.icon-thumbs-down-alt:before { content: '\f165'; } /* '' */
+.icon-share:before { content: '\f1e0'; } /* '' */
+.icon-bell-off:before { content: '\f1f6'; } /* '' */
+.icon-envelope-open:before { content: '\f2b6'; } /* '' */

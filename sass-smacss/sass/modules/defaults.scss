@@ -1,0 +1,69 @@
+/* Start of TickerTag styles | Defaults
+============================================================
+========================================================= */
+
+html,
+body { width: 100%; height: 100%; }
+
+body {
+    // overflow-y: hidden;
+    overflow-x: hidden;
+    min-width: 1100px;
+    height: 100%;
+    font-family: 'robotoregular', Arial, sans-serif;
+    font-size: em(16);
+    text-align: left;
+    color: #666;
+    background: $gray_47;
+}
+
+sup, sub    { font-size: 75%; line-height: 12px; vertical-align: baseline; }
+sup         { top: -0.5em; left: 0.15em; }
+sub         { bottom: -0.25em; }
+strong      { font-family: 'robotobold'; }
+canvas      { display: block; vertical-align: bottom; }
+textarea    { resize: vertical; }
+input:focus { outline: none; }
+
+#body::-webkit-scrollbar { display: none; }
+
+::-webkit-scrollbar { width: 8px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    -webkit-border-radius: 10px;
+    border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    opacity: 0.5;
+    background: rgba(101,101,101,.5);
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.6);
+}
+
+::-webkit-scrollbar-thumb:window-inactive { background: rgba(101,101,101,0.2); }
+
+@import "helpers";
+
+// .tickertags-scope-debugger-container {
+//     position: fixed;
+//     width: 100%;
+//     height: 100%;
+//     opacity: 0.6;
+//     background: #fff;
+    
+// }
+
+// .tickertags-scope-debugger-dashboard {
+//     position: fixed;
+//     z-index: 10001;
+//     width: 100%;
+//     height: 100%;
+//     opacity: 0.6;
+//     background: salmon;
+// }
+

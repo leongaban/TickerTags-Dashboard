@@ -1,0 +1,44 @@
+<div ng-switch on="{{ smt.isTweets }}">
+    <li ng-switch-when="true" ng-class="{ 'active' : smt.active }" class="social-tab-btn">
+        <h1 class="fl" ng-click="smt.select(smt.tab)">Twitter</h1>
+
+        <div class="twitter-filterting">
+            <ul>
+                <li title="Toggle Links" class="fl">
+                    <input type="checkbox" name="twitter_links" value="smt.twitter_links" ng-model="smt.twitter_links" ng-change="smt.toggleTwitter()">
+                    <label for="twitter_links">Links</label>
+                </li>
+                <li title="Toggle Retweets" class="fl">
+                    <input type="checkbox" name="twitter_retweet" value="smt.twitter_retweet" ng-model="smt.twitter_retweet" ng-change="smt.toggleTwitter()">
+                    <label for="twitter_retweet">RT</label>
+                </li>
+            </ul>
+        </div>
+    </li>
+
+    <li ng-switch-default ng-class="{ 'active' : smt.active }" class="social-tab-btn">
+        <h1 class="fl" ng-click="smt.select(smt.tab)">{{ smt.title }}</h1>
+        <div class="pos-rel">
+        
+            <div ng-show="smt.active" class="social-actions">
+                <div class="quick-filter-ico" title="News domain filters" ng-click="smt.toggle(smt.tab)"></div>
+            </div>
+
+            <section  class="news-filter" ng-show="smt.filter">
+                <header>DOMAINS</header>
+                <div class="icon-cancel" ng-click="smt.hide()"></div>
+                <div cg-busy="smt.busy">
+                <ul>
+                    <li>
+                        <input name="domain_news" type="radio" value="" ng-model="smt.domains" ng-change="smt.setDomain(null)"> <p>all ({{ smt.total }})</p>
+                    </li>
+                    <li ng-repeat="domain in smt.domains track by $index">
+                        <input name="domain_news" type="radio" ng-value="domain.key" ng-model="smt.domains" ng-change="smt.setDomain(domain.key)"> <p>{{ domain.key }} ({{ domain.doc_count }})</p>
+                    </li>
+                </ul>
+                </div>
+            </section>
+            <div class="overlay transparent" ng-show="smt.filter" ng-click="smt.hide()"></div>
+        </div>
+    </li>
+</div>

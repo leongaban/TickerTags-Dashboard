@@ -1,0 +1,180 @@
+/* Tickers Panel
+============================================================
+========================================================= */
+
+#tickers-col { overflow-y: auto; }
+
+.tickers-panel,
+#tags-panel {
+    position: fixed;
+    float: left;
+    top: 155px;
+    bottom: 142px;
+    height: 100%;
+    border-right: 1px solid $gray3;
+    background: $gray_47;
+    @include noselect();
+    .icon-spin5 { top: 20px; left: 20px; }
+}
+
+.tickers-panel {
+    overflow-x: hidden;
+    z-index: 98;
+    width: 130px;
+    border-right: 1px solid $gray3;
+    background: $gray_47;
+
+    header { float: left; width: 100%; }
+
+    .ticker {
+        &:hover { background: darken($gray2, 15%); }
+    }
+
+    .add-tag-section { padding-left: 0; }
+    .ticker-hover-container { left: 60px; }
+    .ticker-action-padding { font-size: em(20); }
+}
+
+#tickers-col {
+    .selected {
+        .ticker {
+            color: #fff;
+            background: $blue !important;
+            &:hover { background: lighten($blue, 5%) !important; }
+        }
+    }
+}
+
+.analytics {
+    .tickers-panel { top: 104px; }
+}
+
+.spy-ticker {
+    font-family: 'robotolight' !important;
+    -moz-transition-property: none;
+    -webkit-transition-property: none;
+    transition-property: none;
+    width: 82px;
+    text-align: center;
+
+    .ticker {
+        height: 16px !important;
+        font-size: em(13);
+        line-height: 16px;
+        -moz-transition-property: none;
+        -webkit-transition-property: none;
+        transition-property: none;
+    }
+}
+
+.spy-ticker-border {
+    margin: 20px 0 -14px 0;
+    width: 80px;
+    height: 2px;
+    border-bottom: 1px solid $gray_ticker;
+}
+
+.ticker.help {
+    line-height: 20px;
+    padding: 0px 11px !important;
+    width: 82px;
+    font-size: em(11) !important;
+    color: $gray2 !important;
+    background: none;
+    &:hover { background: none; }
+}
+
+.portfolio-hr { height: 1px; border: none; background: $gray3; }
+
+.portfolio-name {
+    position: relative;
+    top: 5px;
+    left: 5px;
+    padding-right: 15px;
+    font-size: em(10);
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+}
+
+.ticker.manage-portfolios {
+    padding: 5px 10px;
+    width: 80px;
+    color: $gray2;
+    font-size: em(12);
+    line-height: 14px;
+    &:hover { color: #fff; }
+}
+
+.current-portfolio-name {
+    margin: 10px 0 5px !important;
+    .portfolio-name { left: 0; color: $gray2; }
+}
+
+.portfolio-selector { margin: 5px 0 10px !important; }
+
+.add-ticker-tag {
+    padding: 8px;
+    width: auto;
+    text-align: center;
+    color: $gray2;
+    border: 1px solid $gray3;
+    background: $gray4;
+    // @include linear-gradient(darken($gray3, 12%), $gray4);
+    &:hover { color: white; background: $green !important; border: 1px solid $green; }
+    &:active { color: #000; background: $green !important; border: 1px solid white; }
+}
+
+.tickers-column {
+    height: calc(100% - 140px);
+	// overflow-y: auto;
+    // overflow-x: hidden;
+    padding-top: 4px;
+
+	li {
+		margin: 10px 0;
+		padding: 5px 0;
+		cursor: pointer;
+		@include transition(all, .2s, ease-out);
+	}
+
+    .tag-container { width: 100px; }
+}
+
+.column { padding-left: 15px; font-family: 'robotolight'; }
+
+.ticker {
+    z-index: 4;
+    text-transform: uppercase;
+    color: #fff;
+    @include transition(all, .3s, ease-out);
+    &.blue { @include colored-tag($blue) }
+}
+
+.tickers-list {
+	@include transition(opacity, .3s, ease-in-out);
+}
+
+.tickers-list.ng-hide { opacity: 0; }
+
+.no-port-tickers {
+	margin-top: 20px;
+	font-size: em(12);
+	line-height: 16px;
+	padding-right: 10px;
+}
+
+.portfolio-selector {
+    .icon-left-open,
+    .icon-right-open {
+        position: fixed;
+        z-index: 3;
+        top: 247px;
+        width: 20px;
+        height: 20px;
+        &:hover { color: $green; }
+    }
+
+    .icon-left-open { float: left; left: 10px; }
+    .icon-right-open { float: right; left: 105px; }
+}

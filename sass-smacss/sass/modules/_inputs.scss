@@ -1,0 +1,49 @@
+/* Inputs, Selects, Checkboxes etc...
+============================================================
+========================================================= */
+
+// removes chrome input highlight
+*:focus { outline: 0; }
+
+.select-style {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    background: $gray_bg url("../imgs/select-arrow.png") no-repeat 97% 50%;
+    @include rounded(4px);
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 100%;
+    height: 35px;
+    font-size: em(14);
+    cursor: pointer;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+.select-style select:focus { outline: none; }
+
+.rounded4px { @include rounded(4px); }
+
+.search {
+    input {
+        position: relative;
+        font-family: 'roboto_condensedlight';
+        font-size: em(14);
+        line-height: 14px;
+        color: $gray0;
+        border: 1px solid darken($gray4, 5%);
+        background: lighten($gray_47, 2%);
+        @include transition(border, .25s, ease-out);
+        @include rounded(4px);
+        &:hover { border: 1px solid darken($green, 10%); }
+        &:focus {  border: 1px solid $green; }
+    }
+}

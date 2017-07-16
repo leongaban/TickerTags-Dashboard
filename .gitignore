@@ -1,0 +1,30 @@
+# TickerTags Dashboard
+# All change is detectable.
+
+# Folders
+bower_components
+node_modules
+
+# General Files
+*.cache
+*.node-gyp
+*.npm
+*.scssc
+*.ttf
+*.eot
+.DS_Store
+.sass-cache
+.svg.gz
+.bash_history
+.bowerrc
+.idea/
+test/.git
+npm-debug.log
+
+# Files
+app/assets/files/
+app/assets/css/
+app/assets/js/tickertags.bundle.js
+app/assets/js/tickertags.bundle.min.js
+app/assets/js/libs
+build/

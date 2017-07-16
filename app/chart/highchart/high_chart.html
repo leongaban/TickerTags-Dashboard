@@ -1,0 +1,8 @@
+<section id="highchart-container"
+		 ng-class="{ 'chart-maxed' : hc.chartMax,
+		 			 'tags-closed' : hc.tagsClosed }">
+	 <div class="loading-chart" ng-show="hc.chartLoading">
+         <div class="building-chart"><h2>Generating Chart</h2><span class="icon-spin5 animate-spin"></span></div>
+     </div>    
+    <div ui-view="chart@activity"></div>
+</section>

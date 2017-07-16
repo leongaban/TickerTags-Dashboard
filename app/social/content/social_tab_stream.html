@@ -1,0 +1,29 @@
+<section ng-repeat="content in sts.tabStream track by $index" class="pad10">
+	<div class="social-content">
+		<a href="{{ content.link }}" target="_blank">
+			<header><span>{{ content.headline }}</span></header>
+			<p ng-bind-html="content.text"></p>
+		</a>
+		<div ng-show="sts.tabName != 'twitter'" class="domain">
+			<a href="{{ content.domain }}" target="_blank">{{content.domain}}</a>
+		</div>
+		<time>{{content.date}}</time>
+
+		<div class="thumbs-area" ng-show="sts.canHamSpam">
+			<div class="thumbs-container">
+				<div class="icon-thumbs-up-alt"   title="Vote this item up"   ng-click="sts.thumbs(content, 1)"  ng-class="{'selected': content.vote == 1}"></div>
+				<div class="icon-thumbs-down-alt" title="Vote this item down" ng-click="sts.thumbs(content, -1)" ng-class="{'selected': content.vote == -1}"></div>
+				<div class="icon-block" title="Spam this item" ng-class="{'selected': content.spam == 1}" ng-click="sts.spamHam(content, 1)">
+					<span class="fl spam">Spam</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="sentiment-area" ng-show="sts.canSetTweetSentiment && sts.tabName == 'tweets'">
+			<button class="btn" title="Objective" ng-class="{'selected': content.vote == -2}" ng-click="sts.scoreSentiment(content, -2)">O</button>
+			<button class="btn" title="Negative Sentiment" ng-class="{'selected': content.vote == -1}" ng-click="sts.scoreSentiment(content, -1)">--</button>
+			<button class="btn" title="Neutral Sentiment" ng-class="{'selected': content.vote == 0}" ng-click="sts.scoreSentiment(content, 0)">N</button>
+			<button class="btn" title="Positive Sentiment" ng-class="{'selected': content.vote == 1}" ng-click="sts.scoreSentiment(content, 1)">+</button>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,62 @@
+<section class="timespan-header" ng-class="{ 'timeheader-feed-open' : thc.feedOpen }">
+    <!-- <div class="quick-search-ico time-search-icon"></div> -->
+    <div class="icon-search"></div>
+
+    <div class="time-search-container">
+        <search on-ticker-result="thc.setTicker(ticker)" on-tag-result="thc.setTag(tag)" on-portfolio="thc.onPortfolio(ticker, action)"></search>
+    </div>
+
+    <div class="time-controls">
+        <section class="epoch-range-finder" ng-hide="thc.hide">
+
+            <div class="start-epoch-date">
+                <p>Start:</p>
+                <input class="fl" type="text"
+                       id="startdatepicker"
+                       ng-model="thc.display.start"></div>
+
+            <div class="end-epoch-date">
+                <p>End:</p>
+                <input class="fl" type="text"
+                       id="enddatepicker"
+                       ng-model="thc.display.end"></div>
+
+            <button class="add-ticker-tag btn-set-range"
+                    ng-click="thc.setChartRange(thc.setStart, thc.setEnd)">
+                    Set Range
+            </button>
+        </section>
+
+        <section class="graph-controls" ng-hide="thc.hide">
+            <ul class="timescale">
+                <li class="time-range-label">Time range:</li>
+                <li ng-class="{ 'active':thc.interval.h1 }" class="timerange" ng-click="thc.changeTime(1, 'hour', 'minute')"
+                    title="Show timespan of 1 hour"> 1 h
+                </li>
+                <li ng-class="{ 'active':thc.interval.d1 }" class="timerange" ng-click="thc.changeTime(1, 'day', 'hour')"
+                    title="Show timespan of 1 day"> 1 d
+                </li>
+                <li ng-class="{ 'active':thc.interval.w1 }" class="timerange" ng-click="thc.changeTime(1, 'week', 'day')"
+                    title="Show timespan of 1 week"> 1 w
+                </li>
+                <li ng-class="{ 'active':thc.interval.mo1 }" class="timerange" ng-click="thc.changeTime(1, 'month', 'day')"
+                    title="Show timespan of 1 month"> 1 mo
+                </li>
+                <li ng-class="{ 'active':thc.interval.mo3 }" class="timerange" ng-click="thc.changeTime(3, 'month', 'day')"
+                    title="Show timespan of 3 months">3 mos
+                </li>
+                <li ng-class="{ 'active':thc.interval.yr1 }" class="timerange" ng-click="thc.changeTime(1, 'year', 'week') "
+                    title="Show timespan of 1 year">1 yr
+                </li>
+                <li ng-class="{ 'active':thc.interval.yr2 }" class="timerange" ng-click="thc.changeTime(2, 'year', 'week')"
+                    title="Show timespan of 2 years"> 2 yrs
+                </li>
+                <li ng-class="{ 'active':thc.interval.max }" class="timerange" ng-click="thc.changeTime(1, 'max', 'week')"
+                    title="Show max timespan"> max
+                </li>
+            </ul>
+            <granularity></granularity>
+        </section>
+    </div>
+
+</section>

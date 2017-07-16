@@ -1,0 +1,244 @@
+/* Buttons
+============================================================
+========================================================= */
+
+.tag,
+.ticker {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    margin: 0 10px 10px 0;
+    padding: 9px 10px;
+    width: auto;
+    cursor: pointer;
+    clear: both;
+    @include rounded(4px);
+}
+
+.ticker { background: $gray3; }
+
+.clearNone .tag { clear: none; }
+
+.tag {
+    font-family: 'robotolight';
+    text-align: left;
+    color: $gray_d2;
+    border: 1px solid lighten($gray_47, 15%);
+    @include transition(all, .25s, ease-out);
+    -webkit-transition : background 500ms ease-out;
+    -moz-transition : background 500ms ease-out;
+    -o-transition : background 500ms ease-out;
+
+    &:active { border: 1px solid #fff !important; }
+    &:hover  { border: 1px solid lighten($gray_47, 25%); background: $gray4 !important; }
+
+    &.positive,
+    &.negative { color: $gray1; border: 1px solid darken($gray1, 20%); }
+
+    &.positive:after {
+        position: absolute;
+        top: -10px;
+        right: 0;
+        @include triangle(left, 10px, darken($gray1, 20%));
+    }
+
+    &.negative:after {
+        position: absolute;
+        right: -10px;
+        bottom: 0;
+        @include triangle(up, 10px, darken($gray1, 20%));
+    }
+
+    &.tag-yellow { @include colored-tag($tag_yellow); }
+    &.tag-cyan   { @include colored-tag($tag_cyan) }
+    &.tag-blue   { @include colored-tag($tag_blue) }
+}
+
+.tag-yellow {
+    .tag {
+        &.positive:after { @include triangle(left, 10px, $tag_yellow); }
+        &.negative:after { @include triangle(up, 10px, $tag_yellow); }
+    }
+}
+
+.tag-cyan {
+    .tag {
+        &.positive:after { @include triangle(left, 10px, $tag_cyan); }
+        &.negative:after { @include triangle(up, 10px, $tag_cyan); }
+    }
+}
+
+.tag-blue {
+    .tag {
+        &.positive:after { @include triangle(left, 10px, $tag_blue); }
+        &.negative:after { @include triangle(up, 10px, $tag_blue); }
+    }
+}
+
+.btn-alert {
+    padding: 0px 4px;
+    float: right;
+    color: #ccc;
+    background: $gray3;
+    border: 1px solid $gray3;
+    @include rounded(2px);
+    @include transition(all, .5s, ease-out);
+}
+
+.switch-btn {
+    float: left;
+    padding: 15px;
+    color: $gray2;
+    cursor: pointer;
+    // @include linear-gradient(lighten($gray4, 5%), $gray3);
+    &:hover { color: #fff; }
+}
+
+.switch-left {
+    -webkit-border-radius: 4px 0px 0px 4px;
+    -moz-border-radius: 4px 0px 0px 4px;
+    border-radius: 4px 0px 0px 4px;
+}
+
+.switch-right {
+    -webkit-border-radius: 0px 4px 4px 0px;
+    -moz-border-radius: 0px 4px 4px 0px;
+    border-radius: 0px 4px 4px 0px;
+}
+
+.active {
+    .switch-btn {
+        color: #fff;
+        cursor: default;
+        background: lighten($gray3, 10%);
+        @include rounded(4px);
+        @include linear-gradient(lighten($gray3, 10%), lighten($gray4, 10%));
+    }
+}
+
+.btn-green,
+.btn-red,
+.btn-red-bg,
+.btn-gray,
+.btn-gray-dark,
+.btn-light,
+.btn-green,
+.btn-green-filled,
+.btn-alert {
+    text-align: center;
+    cursor: pointer;
+    @include rounded(4px);
+    @include transition(all, .5s, ease-out);
+}
+
+.btn-red {
+    color: #fff !important;
+    background: $red !important;
+    border: 2px solid darken($red, 10%) !important;
+    &:hover { border: 2px solid lighten($red, 10%) !important; background: lighten($red, 10%) !important; }
+}
+
+.btn-red-bg {
+    color: #fff !important;
+    background: $red !important;
+    &:hover { background: lighten($red, 10%) !important; }
+}
+
+.btn-small { padding: 2px 4px; font-size: em(11); }
+
+.btn-green,
+.btn-gray { width: 100%; }
+.btn-green { border: 2px solid $green !important; }
+
+.btn-green {
+    color: $green !important;
+    background: #fff !important;
+    &:hover { color: #fff !important; background: $green !important; }
+}
+
+.btn-green-filled {
+    color: #fff;
+    background: darken($green, 10%) !important;
+    border: 2px solid darken($green, 10%) !important;
+
+    &:hover { background: $green !important; border: 2px solid $green !important; }
+
+    &:active {
+        color: #fff !important;
+        background: darken($green, 15%) !important;
+        border: 2px solid darken($green, 15%) !important;
+    }
+}
+
+.btn-light {
+    color: $gray4;
+    background: $gray0;
+    border: 2px solid darken($gray1, 10%);
+    &:hover,
+    &:focus { color: #fff; background: $gray3; }
+}
+
+.btn-gray {
+    color: #fff;
+    background: $gray2;
+    border: 2px solid darken($gray1, 10%);
+    &:hover,
+    &:focus { color: #fff; background: $gray3; }
+}
+
+.btn-gray-dark {
+    width: 414px !important;
+    color: #fff;
+    background: $gray3;
+    border: 2px solid darken($gray2, 10%);
+    cursor: not-allowed;
+}
+
+.btn-help {
+    float: right;
+    margin-bottom: 10px;
+    padding: 5px 7px;
+    font-size: em(14);
+    border: 1px solid $gray2;
+    background: $gray0;
+    @include rounded(4px);
+    &:hover { background: lighten($gray0, 5%); }
+}
+
+.disabled {
+    opacity: 0.2;
+    cursor: not-allowed !important;
+    &:focus { color: $gray4; background: $gray0; }
+}
+
+.btn-admin {
+    position: relative;
+    top: -3px;
+    margin-right: 20px;
+    padding: 5px 7px;
+    font-size: em(11);
+    color: $white;
+    background: $facebook;
+    border: 1px solid $twitter;
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.1);
+    @include rounded(3px);
+    @include transition(background, .2s, ease-in-out);
+    &:hover  { background: lighten($facebook, 10%); }
+    &:active { background: darken($facebook, 10%); }
+}
+
+button:disabled,
+button[disabled] {
+    border: 2px solid $gray4;
+    background: $gray2 !important;
+    cursor: not-allowed !important;
+}
+
+button.btn-light:disabled ,
+button.btn-light[disabled] {
+    opacity: 0.5;
+    &:hover,
+    &:focus { color: $gray4; background: $gray0; }
+}

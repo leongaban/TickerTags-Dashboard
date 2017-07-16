@@ -1,0 +1,16 @@
+/** Headers */
+/** ----------------------------------------------------- */
+.platform-header,
+.view-header {
+	position: fixed;
+	width: 100%;
+	min-width: 960px;
+	@include noselect();
+}
+
+.platform-header { z-index: 104; }
+.view-header     { z-index: 101; }
+
+@import "platform_header";
+@import "view_header";
+@import "timespan";

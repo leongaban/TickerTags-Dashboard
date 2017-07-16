@@ -1,0 +1,52 @@
+/* Colors module
+============================================================
+========================================================= */
+
+/* Primary */
+// ---------------------------------------------------------
+$green: 	  #00D88C; // rgb(0,216,140)
+$red:		  #FF6565; // rgb(255,101,101)
+$blue:        #4C73FF; // rgb(76,115,255)
+
+/* Grays */
+// ---------------------------------------------------------
+$gray_ticker: #868686; // rgb(134,134,134)
+$gray_light:  #E5E5E5; // rgb(229,229,229)
+$gray4:       #3D3D3D; // rgb(61,61,61)
+$gray3:       #656565; // rgb(101,101,101)
+$gray2:       #BFBFBF; // rgb(191,191,191)
+$gray1:       #FAFAFA; // rgb(250,250,250)
+$gray0:       #F0F0F0; // rgb(240,240,240)
+$gray_bg:	  #F5F5F5;
+$gray_d2:     #D2D2D2;
+$gray_47:     #474747;
+$gray_54:     #545454;
+$gray_A5:     #A5A5A5;
+
+/* Chart */
+// ---------------------------------------------------------
+$tag_yellow:  #FDE18D; // rgb(253,225,141)
+$tag_cyan:    #7DD0FA; // rgb(125,208,250)
+$tag_blue:    #58A6EC; // rgb(88,166,236)
+
+/* Brands */
+// ---------------------------------------------------------
+$facebook: 	  #438acb;
+$twitter: 	  #5cbde9;
+
+/* Elements */
+// ---------------------------------------------------------
+$white:       #fff;
+
+.blue      { color: $tag_blue !important; }
+.blue-bg   { color: $tag_blue; }
+.red       { color: $red !important; }
+.red-bg    { background: $red; }
+.yellow    { color: $tag_yellow !important; }
+.gray1     { color: $gray1 !important; }
+.gray2     { color: $gray2 !important; }
+.gray3     { color: $gray3 !important; }
+.white     { color: $white; }
+.green     { color: $green !important;}
+.gray0dark { color: darken($gray0, 10%) !important; }
+.facebook  { color: $facebook; }

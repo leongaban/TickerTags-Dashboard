@@ -1,0 +1,30 @@
+/* Activity Panel - Containers the ChartHeader, HightChart and SocialMedia
+============================================================
+========================================================= */
+
+.activity-panel {
+	float: left;
+	position: fixed;
+	top: 155px;
+	right: 0px;
+	// left: 380px;
+	left: 384px;
+	width: auto;
+	height: 100%;
+	@include transition(all, .5s, ease-out);
+	// @include noselect();
+	&.flexing { float: right; position: relative; left: 0; }
+}
+
+.activity-panel.left0 { left: 0; }
+
+.activity-panel.analytics {
+	top: 104px;
+    left: 131px;
+}
+
+// .cols-collapsed {
+// 	.activity-tickers_panel { left: 0; z-index: 100; }
+// 	.tickers-tickers_panel,
+// 	#tags-tickers_panel { display: none; }
+// }

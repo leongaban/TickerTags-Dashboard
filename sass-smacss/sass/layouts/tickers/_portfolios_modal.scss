@@ -1,0 +1,82 @@
+.modal-manage-portfolios {
+	top: 40px; margin-left: -400px !important; width: 800px;
+	header { float: left; width: 100%; height: 55px; }
+	h1 { font-size: em(20); color: #fff; }
+	h3 { color: $gray2; }
+	.icon-cancel.big-x { top: 15px; right: 10px; }
+}
+
+.portfolios-container { overflow-y: auto; height: 385px; }
+
+.named-portfolio { float: left; margin-bottom: 10px; width: 100%; }
+
+.tickers-preview { position: absolute; left: 209px; }
+
+.port-asso-tickers {
+	.ticker { margin-left: 0; }
+	sub { bottom: -1.25em; }
+}
+
+.port-asso-buttons {
+	margin-top: 10px; margin-right: 20px; width: 170px;
+	.btn-gray { margin-left: 10px; font-size: em(12); }
+	.btn-red-bg { margin-left: 10px !important; }
+}
+
+.btn-create-portfolio { float: right; position: relative; width: 150px; }
+
+.btn-close-tight { width: 80px; float: right; }
+
+////////////////////////////////////////////////////////////
+.modal-create-portfolio {
+	top: 42px;
+	width: 700px;
+	margin-left: -350px !important;
+	h1 { font-size: em(20); color: #fff; }
+	h3 { color: $gray2; }
+	.search-input { position: relative !important; top: 5px; left: 0; }
+	.search-popover { position: relative !important; top: 15px; float: left; }
+}
+
+.modal-portfolio-scroll { max-height: 500px; min-height: 160px; overflow-y: auto; }
+
+.create-portfolio-ticker-search {
+	.search-tags { display: none; }
+	input.form-control { border: 1px solid #fff; }
+}
+
+.create-portfolio-tags-search {
+	.search-tickers { display: none; }
+	.search-popover { width: 370px; }
+	.fuzzy-tags {
+		margin-top: 10px;
+		width: 49%;
+		max-height: 150px;
+		min-height: 150px;
+	}
+	.tag-container-container { height: 36px; }
+	.tag { margin: 0; padding: 2px 4px; }
+}
+
+.fuzzy-selected-tags { float: right; width: 48%; margin-left: 10px; }
+
+.portfolio-input-name { padding: 5px 10px; border: 1px solid $gray2; }
+
+.new-port-tickers {
+	float: left; width: 100%;
+	.ticker:first-child { margin-left: 0; }
+	.icon-cancel { float: left; margin: 0 5px 0 -5px; }
+}
+
+.sample-btn {
+	position: relative;
+    left: 10px;
+    top: 3px;
+	color: #fff;
+	border: 1px solid $gray2;
+	background: $gray4;
+	@include rounded(4px);
+	@include transition(background, .4s, ease-in-out);
+	&:hover { color: $gray4; background: $gray2; }
+	&:active { color: #fff; background: $gray4; }
+}

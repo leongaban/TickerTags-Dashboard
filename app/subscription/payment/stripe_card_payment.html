@@ -1,0 +1,17 @@
+<form>
+    <div class="form-row mt10">
+        <label for="card-element" class="pos-rel top10px">Credit or debit card</label>
+
+        <div id="card-element" class="mt20">
+            <!-- a Stripe Element will be inserted here. -->
+        </div>
+
+        <!-- Used to display form errors -->
+        <div id="card-errors"></div>
+    </div>
+
+    <button class="signup-btn btn-green-filled mt20"
+            ng-class="{ 'disabled' : scp.disableSubmit }"
+            ng-disabled="scp.disableSubmit"
+            ng-click="scp.submit()">Submit Payment</button>
+</form>

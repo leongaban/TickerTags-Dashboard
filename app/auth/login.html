@@ -1,0 +1,32 @@
+<div class="login-container">
+    <section class="login-form-block">
+        <header>
+            <div class="tickertags-logo-big" ui-sref="login"></div>
+            <h1>All change is detectable.</h1>
+            <!-- <h2>Please sign in below.</h2> -->
+            <h2>We connect trending social content to investable companies</h2>
+        </header>
+
+        <div class="login-form mt20">
+            <form name="loginForm" ng-submit="lg.login(credentials)" novalidate>
+                <input type="text" id="username" placeholder="Username" name="username" ng-model="credentials.username">
+                <input type="password" id="password" placeholder="Password" name="password" ng-model="credentials.password">
+                <button type="submit" class="login-btn">Login &raquo;</button>
+            </form>
+
+            <button ui-sref="subscription.customer" class="signup-btn btn-green-filled mt20">Sign up and Subscribe</button>
+
+            <p class="terms-of-use">
+                <a title="Reset your password" ng-click="lg.gotoPasswordReset()">Forgot password?</a>
+            </p>
+
+            <p class="terms-of-use">
+                By logging in you agree to our
+                <a href="assets/static/tickertags-terms-of-use.pdf" target="_blank">Terms of Use</a>
+                and
+                <a href="assets/static/privacypolicy.pdf" target="_blank">Privacy Policy</a>
+                | <a href="https://www.tickertags.com/about/" target="_blank">About</a>
+            </p>
+        </div>
+    </section>
+</div>

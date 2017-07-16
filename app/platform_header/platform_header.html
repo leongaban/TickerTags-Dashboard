@@ -1,0 +1,56 @@
+<section class="platform-header" id="platform-header">
+    <div ng-click="ph.resetDashboard()" class="tickertags-logo"></div>
+
+    <!-- DO NOT REMOVE -->
+    <header class="switch-mode">
+        <nav class="fl">
+            <div class="switch-btn-container">
+                <ul>
+                    <li ng-class="{ 'active' : ph.onAnalytics }">
+                        <div class="switch-btn switch-left" ng-click="ph.switchView('analytics')">Analytics</div>
+                    </li>
+                    <li ng-class="{ 'active' : !ph.onAnalytics }">
+                        <div class="switch-btn switch-right" ng-click="ph.switchView('dashboard')">Dashboard</div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+   
+    <section class="ph user-actions">
+        <ul>
+            <li ng-show="ph.submitAlert">
+                <button class="btn-admin" ng-click="ph.importManageTickers()">Import Tickers</button>
+            </li>
+            <li ng-show="ph.submitAlert">
+                <button class="btn-admin" ng-click="ph.fakeAlert()">Fake Alert</button>
+            </li>
+            <li ng-show="ph.submitAlert">
+                <button class="btn-admin" ng-click="ph.openSubmitAlert(ph.showInsightForm)">Submit Alert</button>
+            </li>
+
+            <li class="user-name" ng-click="ph.toggleUserDropdown($event)" title="User settings &amp; logout">
+                <span>{{ ph.username }}</span>
+                <div class="user-down-arrow"></div>
+            </li>
+
+            <li>
+                <div class="platform-btn" title="Email TickerTags support">
+                    <a href="mailto:feedback@tickertags.com" target="_blank"><div class="icon-envelope-open"></div></a>
+                </div>
+            </li>
+
+            <li>
+                <div class="platform-btn" ng-click="ph.gotoHelp()" title="TickerTags FAQ">
+                    <div class="icon-help-circled"></div>
+                </div>
+            </li>
+
+            <li ng-hide="ph.onAnalytics">
+                <div class="bell-container" ng-class="{ 'feed-on' : ph.feedOpen }" ng-click="ph.toggleFeedPanel()" title="Alerts Feed">
+                    <div ng-class="{ 'icon-bell-alt' : !ph.newAlerts, 'alerts-red' : ph.newAlerts, 'fader' : ph.newAlerts }"></div>
+                </div>
+            </li>
+        </ul>
+    </section>
+</section>

@@ -1,0 +1,21 @@
+<div id="settings-view">
+    <section class="platform-header">
+        <header>
+            <div ui-sref="dashboard" class="tickertags-logo"></div>
+            <div ng-click="logout()" class="inactive-logout">Logout</div>
+        </header>
+    </section>
+
+    <section class="user-settings-view">
+        <div class="user-settings-content">
+
+            <section class="renew-section">
+                <h1>The subscription for username
+                    <em class="yellow">{{ username }}</em> is inactive.
+                </h1>
+            </section>
+            
+            <subscription-options role="role"></subscription-options>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,94 @@
+<div class="new-port-tickers mt20">
+    <div class="ticker"><div class="icon-cancel" ng-click="ptc.remove(ptc.ticker)"></div>{{ ptc.ticker.ticker }}</div>
+
+    <fieldset class="mt10">
+         <div class="fl mr10">
+            <label for="all" class="mr10">All tags</label>
+            <input type="checkbox" value="all"
+                   ng-model="ptc.checkAll"
+                   ng-click="ptc.toggleAll(ptc.checkAll)" name="all" />
+        </div>
+    </fieldset>
+
+    <div class="mt20 create-portfolio-tags-search" ng-hide="ptc.checkAll">
+        <h3>Search and select to add specific Tags</h3>
+
+        <input type="text" class="portfolio-input-name rounded4px" placeholder="Search"
+               ng-model="ptc.searched"
+               ng-change="ptc.tagSearch(ptc.searched, ptc.ticker)"
+               ng-keyup="ptc.keyUp($event)"
+               ng-click="ptc.searchStopPropagation($event)">
+
+        <div class="fl w100">
+            <div class="fuzzy-tags" ng-show="ptc.tagsListLoaded">
+                <ul>
+                    <li ng-repeat="tag in ptc.tagsList track by $index" ng-class="{ 'selected': tag.selected }">
+                        <div class="tag-container-container">
+                            <div class="tag-container">
+                                <div class="tag"
+                                     ng-click="ptc.selectTag(tag)"
+                                     ng-class="{ 'positive': tag.direction == 'positive',
+                                                 'negative': tag.direction == 'negative',
+                                                 ''        : tag.direction == 'stagnant' }">{{ tag.term }}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="fuzzy-selected-tags topneg35">
+                <ul>
+                    <li ng-repeat="tag in ptc.selectedTags track by $index" class="fl">
+                        <div class="fl auto">
+                        	<div class="tag" ng-click="ptc.removeTag(tag)">
+                            	{{ tag.term }} <div class="icon-cancel fr"></div>
+                        	</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt20 fl w49">
+            <h3>Add tags by category (select multiple categories with shift or command click)</h3>
+            <select class="rounded4px"
+                    name="multipleSelect"
+                    id="multipleSelect"
+                    ng-model="ptc.multipleSelect"
+                    ng-change="ptc.selectCategories(ticker)"
+                    multiple>
+                <option value="brand">Brand</option>
+                <option value="client">Client</option>
+                <option value="cashtag">Cashtag</option>
+                <option value="competitor-name">Competitor Name</option>
+                <option value="company-name">Company Name</option>
+                <option value="government">Government / Regulation</option>
+                <option value="events">Events</option>
+                <option value="industry">Industry</option>
+                <option value="news">News</option>
+                <option value="people">People</option>
+                <option value="philanthropic">Philanthropic</option>
+                <option value="place">Place</option>
+                <option value="products">Products</option>
+                <option value="product-category">Product Category</option>
+                <option value="product-competing">Product (competing)</option>
+                <option value="product-feature">Product Feature</option>
+                <option value="problem">Problem</option>
+                <option value="related-company-name">Related Company Name</option>
+                <option value="subsidiary">Subsidiary</option>
+                <option value="trend">Trend</option>
+                <option value="event">Event</option>
+            </select>
+        </div>
+
+        <div class="fuzzy-selected-tags top65 w48">
+        	<ul>
+        		<li ng-repeat="category in ptc.multipleSelect">
+        			<div class="tag" ng-click="ptc.removeCategory(category)">
+        				{{ category }} <div class="icon-cancel fr"></div>
+        			</div>
+        		</li>
+        	</ul>
+        </div>
+    </div>
+</div>

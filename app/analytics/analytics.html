@@ -1,0 +1,72 @@
+<div>
+<platform-header></platform-header>
+<section class="analytics-view">
+    <header>
+        <div class="analytics-title">
+        	<div class="fl">
+        		<h1>ANALYTIC REPORTS:</h1>
+        	</div>
+
+        	<div class="analytics-ticker-info">
+        		<div class="ticker blue">{{ ac.ticker }}</div>
+	        	<span class="ac-company-name">{{ ac.companyName }}</span>
+	        	<div class="ac-company-price" ng-hide="ac.hidePrice">
+	        		<em>$</em> <span>{{ ac.price }}</span>
+	        	</div>
+        	</div>
+        </div>
+	</header>
+	<section class="analytics-table">
+		<table>
+			<thead>
+				<tr>
+					<td>Ticker</td>
+					<td>KPI</td>
+					<td>Tag</td>
+					<td>Data Source</td>
+					<td>Correlation Type </td>
+					<td>Length of Period</td>
+					<td>Mentions <sub>(Current Period - Not Yet Reported)</sub></td>
+					<td>Frequency (YoY % Change)</td>
+					<td>Frequency (PoP % Change)</td>
+					<td>Correlation Score</td>
+					<td>Historical Periods <sub>Factored Into Correlation Score</sub></td>
+					<td>KPI Forecast <sub>(Company)</sub></td>
+					<td>KPI Estimate <sub>(Analyst Consensus)</sub></td>
+					<td>KPI Directional Indicator <sub>(Tags Derived) In Line = less than 5% deviation from Analyst Consensus</sub></td>
+					<td>TickerTags vs. Analyst Consensus Win Rate</td>
+					<td>Most Recent Tickertags Report</td>
+					<td>Next KPI Report Date</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="report in ac.reports">
+					<td class="padr-20">
+						<div class="fl mbot10">
+							<div class="ticker">{{ ac.ticker }}</div>
+						</div>
+						<p class="fl w100">{{ ac.companyName }}</p>
+					</td>
+					<td>{{ report.kpi.name }}</td>
+					<td><div class="tag">{{ report.term.term }}</div></td>
+					<td>Twitter</td>
+					<td>{{ report.correlation_type }} {{ report.report_period_type }}</td>
+					<td>{{ report.period_type }}</td>
+					<td>{{ repor.current_mentions }}</td>
+					<td>{{ report.frequency_yoy }}</td>
+					<td>{{ report.frequency_pop }}</td>
+					<td>{{ report.correlation_score }}</td>
+					<td>{{ report.historical_periods }}</td>
+					<td>{{ report.kpi_forecast }}</td>
+					<td>{{ report.kpi_estimate }}</td>
+					<td>{{ report.kpi_directional_indicator }}</td>
+					<td>{{ report.win_rate }}</td>
+					<td>{{ report.most_recent_report }}</td>
+					<td>{{ report.next_kpi_report_date }}</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</section>
+</section>
+</div>

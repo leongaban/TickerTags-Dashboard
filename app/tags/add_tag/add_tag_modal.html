@@ -1,0 +1,95 @@
+<div>
+    <div class="modal-add-tag">
+        <form ng-submit="atg.addCustomTag()" novalidate>
+            <header class="modal-add-tag-header">
+                <h1>Submit a tag to</h1>
+                <div class="fl ml10">
+                    <div class="ticker">{{ :: atg.ticker }}</div>
+                </div>
+                <div class="fl">
+                    <div class="icon-help-circled" ng-click="atg.gotoHelp()" title="Tags help"></div>
+                </div>
+                <div class="icon-cancel" ng-click="atg.cancel()"></div>
+            </header>
+
+            <div class="fl w100">
+                <input type="text"
+                       ng-model="atg.addedTerm"
+                       focus-add-tag="atg.focusAddTag"
+                       ng-change="atg.tagTyping(atg.addedTerm)"
+                       placeholder="tag term" required>
+            </div>
+
+            <div class="similar-tags">
+                <div class="similar-tags-results" ng-show="atg.similarTags">
+                    <section class="search-tags">
+                        <header><h1>Similar Existing Tags</h1></header>
+                        <div class="icon-cancel" ng-click="atg.closeSimilarTags()"></div>
+                        <div class="fuzzy-tags"  ng-mouseleave="atg.leaveTagSearch()">
+                            <span ng-show="atg.loadSpinner" class="icon-spin5 animate-spin"></span>
+                            <span ng-show="atg.noResults" class="gray2">No similar results</span>
+                            <ul>
+                                <li ng-repeat="t in atg.tagsList" ng-class="{ 'selected': t.selected }">
+                                    <div class="tag-container-container">
+                                        <div class="tag-container">
+                                            <div class="tag no-cursor"
+                                                 ng-class="{ 'positive': t.direction == 'positive',
+                                                             'negative': t.direction == 'negative',
+                                                             ''        : t.direction == 'stagnant' }">{{ :: t.term }}</div>
+
+                                            <div class="atg-ticker-modifier" ng-show="t.tickers">
+                                                <ul>
+                                                    <li ng-repeat="ticker in t.tickers">
+                                                        <div class="ticker">{{ ticker.ticker }}</div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="fl ml10 font13" ng-show="t.tag">
+                                                <span class="gray3">Category</span>
+                                                <span class="gray2">{{ t.tag }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="add-tag-options">
+                <div class="add-tag-category">
+                    <p>Choose a tag category</p>
+                    <div class="select-style">
+                        <select ng-model="atg.category" ng-options="option.value for option in atg.categoryOptions"></select>
+                    </div>
+                </div>
+
+                <div class="add-tag-visibility">
+                    <p>Choose a visibility</p>
+                    <div class="select-style">
+                        <select ng-model="atg.addedVisibility">
+                            <option value="private" selected>Private** (limited to  300 tags / month)</option>
+                            <option value="public" >Public* (unlimited, subject to review)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fl w100">
+                <p class="font13 ln24 mbot0">
+                    Content for newly added Tags can take up to 30 minutes to populate. <br/>
+                    Non-twitter content can take up to 4 hours to populate. <br/>
+                    <span class="gray1">Public Tag</span> submissions will be designated as Private while awaiting curator review or upon curator rejection. <br/>
+                    <span class="gray1">Private Tag</span> submissions are not viewable by other users or TickerTags Curators. <br/>
+                    We highly suggest contacting Tag curation teams for assistance for tag formatting
+                    <a href="mailto:tagging@tickertags.com">(tagging@tickertags.com)</a>
+                </p>
+            </div>
+
+            <button class="btn-green-filled mbot20 w100" type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="overlay" ng-click="atg.cancel()"></div>
+</div>

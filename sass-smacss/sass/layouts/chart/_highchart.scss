@@ -1,0 +1,100 @@
+/* Highchart styles
+============================================================
+========================================================= */
+
+#highchart-container { @include noselect(); }
+
+#highchart-element { position: relative; }
+
+.highcharts-title { display: none; }
+
+.highchart-modal {
+    position: fixed !important;
+    z-index: 1050;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.chart-tooltip {
+    padding: 10px;
+    box-shadow: 2px 2px 2px;
+    @include rounded(4px);
+    li { line-height: 16px; margin-bottom: 0; padding-bottom: 0; }
+}
+
+#highchart-container,
+#chart1,
+#chart-loading,
+.loading-chart { background: $gray_47 !important; }
+.building-chart { color: $white; background: $gray_47 !important; }
+.highchart-legend-loading { color: red !important; }
+
+#chart1 { height: 260px; }
+#chart1.hauto,
+.social-expanded { top: -260px; }
+
+#highchart-container {
+    position: relative;
+    width: auto;
+    height: auto;
+    @include transition(all, .5s, ease-out);
+}
+
+// .tags-closed { top: 64px; left: -380px; }
+.chart-maxed {
+    top: 0px !important;
+    left: 0px !important;
+    height: auto !important;
+}
+// .tags-closed { top: 0px; left: 0px; }
+.tags-closed {
+    top: 64px;
+    left: -380px;
+}
+
+// .feed-opened { left: -380px; }
+
+.loading-chart {
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 340px;
+    background: $gray_47 !important;
+    @include clearfix();
+}
+
+.building-chart {
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-left: -180px;
+    height: 340px;
+    color: $gray2;
+    text-align: center;
+    background: $gray_47 !important;
+    h2 { margin-bottom: 10px; font-size: em(20); }
+    .icon-spin5 { margin-left: -20px; font-size: em(30); }
+}
+
+#chart1,
+#chart-loading {
+    width: auto;
+    height: auto;
+    // height: 400px; background: $gray_47 !important; @include transition(all, .5s, ease-out);
+}
+
+#highchart-container,
+#chart1 { @include transition(all, .5s, ease-out); }
+
+#chart-loading {
+    position: absolute;
+    top: 0;
+    padding-top: 200px;
+    height: 200px !important;
+    text-align: center;
+    h1 { margin: 0 auto 10px; width: 120px; }
+}
